@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bbuilding001"]
+
+[ext_resource type="Script" path="res://scripts/world/building.gd" id="1_build"]
+
+[node name="Building" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 10
+script = ExtResource("1_build")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -24.0
+offset_top = -36.0
+offset_right = 24.0
+offset_bottom = -28.0
+max_value = 1.0
+value = 0.0
+show_percentage = false
