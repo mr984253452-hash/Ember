@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dfq2iqhuccltx"]
 
+[ext_resource type="Script" uid="uid://4vxvmd16aeo1" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://doghmovcgeltw" path="res://graphics/map.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dghd7rii024ea" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bx2rg78cu21y2" path="res://scenes/tree.tscn" id="3_lnu2h"]
@@ -11,6 +12,7 @@ size = Vector2(490, 43.75)
 size = Vector2(71, 720)
 
 [node name="Game" type="Node2D" unique_id=1831773614]
+script = ExtResource("1_lbhrr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156065904]
 texture = ExtResource("1_uwrxv")
@@ -21,18 +23,17 @@ texture = ExtResource("1_uwrxv")
 position = Vector2(103, 243)
 
 [node name="Borders" type="Node2D" parent="." unique_id=1639341892]
+visible = false
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=771779552]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3" unique_id=2101832593]
-visible = false
 position = Vector2(0, -338.75)
 shape = SubResource("RectangleShape2D_j3v6u")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Borders" unique_id=886974030]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4" unique_id=1112766139]
-visible = false
 position = Vector2(0, 338.75)
 shape = SubResource("RectangleShape2D_j3v6u")
 
@@ -50,4 +51,13 @@ shape = SubResource("RectangleShape2D_kkxu0")
 
 [node name="Timer" type="Timer" parent="." unique_id=1531811868]
 wait_time = 4.0
+one_shot = true
 autostart = true
+
+[node name="FinishArea2D" type="Area2D" parent="." unique_id=1344000019]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishArea2D" unique_id=1220877732]
+polygon = PackedVector2Array(-187, -314, 185, -314, 184, -133, -186, -135)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="FinishArea2D" to="." method="_on_area_2d_body_entered"]

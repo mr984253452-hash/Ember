@@ -5,24 +5,31 @@ size = Vector2(10, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g5osr"]
 
-[node name="静态贴图" type="Sprite2D" unique_id=662816711]
+[node name="基础节点" type="Node2D" unique_id=720914940]
 
-[node name="相机" type="Camera2D" parent="." unique_id=332193140]
+[node name="静态贴图" type="Sprite2D" parent="." unique_id=1808266401]
+
+[node name="相机" type="Camera2D" parent="." unique_id=45276996]
 limit_enabled = false
 
-[node name="静态碰撞" type="StaticBody2D" parent="." unique_id=1423489992]
+[node name="静态碰撞" type="StaticBody2D" parent="." unique_id=1235268145]
 
-[node name="碰撞形状" type="CollisionShape2D" parent="静态碰撞" unique_id=1756154051]
+[node name="碰撞形状" type="CollisionShape2D" parent="静态碰撞" unique_id=233168421]
 visible = false
 shape = SubResource("RectangleShape2D_vka04")
 
-[node name="动态碰撞" type="CharacterBody2D" parent="." unique_id=487743724]
+[node name="动态碰撞" type="CharacterBody2D" parent="." unique_id=393885049]
 
-[node name="碰撞形状" type="CollisionShape2D" parent="动态碰撞" unique_id=1651452464]
+[node name="碰撞形状" type="CollisionShape2D" parent="动态碰撞" unique_id=1345077978]
 visible = false
 shape = SubResource("RectangleShape2D_vka04")
 
-[node name="创建动画切换精灵帧" type="AnimatedSprite2D" parent="." unique_id=1735020663]
+[node name="创建动画切换精灵帧" type="AnimatedSprite2D" parent="." unique_id=33565335]
 sprite_frames = SubResource("SpriteFrames_g5osr")
 
-[node name="计时器" type="Timer" parent="." unique_id=1158757152]
+[node name="计时器" type="Timer" parent="." unique_id=1531067938]
+
+[node name="检测进入" type="Area2D" parent="." unique_id=1657077634]
+
+[node name="绘制检测区域" type="CollisionPolygon2D" parent="检测进入" unique_id=491798058]
+polygon = PackedVector2Array(-194, -317, 193, -318, 192, -132, -192, -131)
