@@ -1,18 +1,49 @@
 [gd_scene format=3 uid="uid://dghd7rii024ea"]
 
-[ext_resource type="Texture2D" uid="uid://bkgrir378horu" path="res://graphics/player/player_simple.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bvow1in7idxld" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://c4q6c7mxqh78h" path="res://graphics/player/player_tileset.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v6u"]
 size = Vector2(8, 10)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3v6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": 1,
+"name": &"left",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=1479036607]
 script = ExtResource("1_g2els")
 
-[node name="动态碰撞" type="CharacterBody2D" parent="." unique_id=1575596553]
+[node name="创建动画切换精灵帧" type="AnimatedSprite2D" parent="." unique_id=354007191]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=930821223]
-texture = ExtResource("1_3vyb7")
+[node name="动态碰撞" type="CharacterBody2D" parent="." unique_id=1575596553]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1714861560]
 zoom = Vector2(4, 4)
@@ -28,3 +59,9 @@ limit_enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1973750679]
 shape = SubResource("RectangleShape2D_j3v6u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1036664003]
+sprite_frames = SubResource("SpriteFrames_j3v6u")
+animation = &"left"
+autoplay = "left"
+frame_progress = 0.23645757
