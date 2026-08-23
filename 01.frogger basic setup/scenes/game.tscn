@@ -16,11 +16,12 @@ script = ExtResource("1_lbhrr")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=1156065904]
 texture = ExtResource("1_uwrxv")
+metadata/_edit_lock_ = true
 
 [node name="Borders" type="Node2D" parent="." unique_id=1639341892]
-visible = false
 light_mask = 8
 visibility_layer = 0
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=771779552]
 
@@ -47,8 +48,10 @@ position = Vector2(227.5, 0)
 shape = SubResource("RectangleShape2D_kkxu0")
 
 [node name="Timers" type="Node2D" parent="." unique_id=288792677]
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="Timers" unique_id=1531811868]
+wait_time = 0.15
 autostart = true
 
 [node name="Objects" type="Node2D" parent="." unique_id=260690374]
@@ -62,12 +65,14 @@ position = Vector2(103, 243)
 [node name="FinishArea2D" type="Area2D" parent="." unique_id=1344000019]
 collision_layer = 0
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishArea2D" unique_id=1220877732]
 polygon = PackedVector2Array(-187, -314, 185, -314, 184, -133, -186, -135)
 
 [node name="CarStartPosition" type="Node2D" parent="." unique_id=253525206]
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="CarStartPosition" unique_id=1141409439]
 position = Vector2(-197, 167)
