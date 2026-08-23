@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bg46h5x2n6eev"]
 
 [ext_resource type="FontFile" uid="uid://dr201ov4c76pb" path="res://fonts/Crackman.otf" id="1_4ignj"]
+[ext_resource type="Script" uid="uid://b7ytu68u08vc1" path="res://scenes/title.gd" id="1_pyl7j"]
 [ext_resource type="Texture2D" uid="uid://bkgrir378horu" path="res://graphics/player/player_simple.png" id="2_p6dhs"]
 [ext_resource type="FontFile" uid="uid://hqpa84d2dqvp" path="res://fonts/Better VCR 9.0.1.ttf" id="3_pyl7j"]
 
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pyl7j")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=980530132]
 layout_mode = 1
