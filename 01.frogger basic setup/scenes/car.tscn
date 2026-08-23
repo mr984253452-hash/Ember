@@ -7,6 +7,7 @@
 size = Vector2(22, 10)
 
 [node name="car" type="Area2D" unique_id=674717329]
+visible = false
 script = ExtResource("1_qt2eu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=829901811]
