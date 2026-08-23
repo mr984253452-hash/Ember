@@ -64,4 +64,4 @@ shape = SubResource("RectangleShape2D_j3v6u")
 sprite_frames = SubResource("SpriteFrames_j3v6u")
 animation = &"left"
 autoplay = "left"
-frame_progress = 0.23645757
+frame_progress = 0.7003397
