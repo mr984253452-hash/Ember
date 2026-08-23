@@ -3,7 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bkgrir378horu" path="res://graphics/player/player_simple.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bvow1in7idxld" path="res://scenes/player.gd" id="1_g2els"]
 
-[node name="Player" type="Node2D" unique_id=418672599]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v6u"]
+size = Vector2(8, 10)
+
+[node name="Player" type="CharacterBody2D" unique_id=1479036607]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=930821223]
@@ -20,3 +23,6 @@ position_smoothing_speed = 20.0
 
 [node name="相机" type="Camera2D" parent="Camera2D" unique_id=2054924139]
 limit_enabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1973750679]
+shape = SubResource("RectangleShape2D_j3v6u")
