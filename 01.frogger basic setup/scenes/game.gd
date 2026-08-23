@@ -5,7 +5,8 @@ var score:int
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:  # 触发 CollisionPolygon2D 的信号
 	call_deferred('change_scene')                      # 延迟指令,用来切换界面时的指令不然会切换界面一直卡在当前的物理流程里
-	Global.score = score                               # 从全局变量 Global 提取 score分数
+	if score < Global.score:
+		Global.score = score                               # 从全局变量 Global 提取 score分数
 	
 func change_scene():
 	get_tree().change_scene_to_file('res://scenes/title.tscn') # 切换至得分界面
