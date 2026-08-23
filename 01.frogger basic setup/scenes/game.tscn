@@ -4,7 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://dghd7rii024ea" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bx2rg78cu21y2" path="res://scenes/tree.tscn" id="3_lnu2h"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v6u"]
+size = Vector2(490, 43.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkxu0"]
+size = Vector2(71, 720)
+
 [node name="Game" type="Node2D" unique_id=1831773614]
+
+[node name="静态贴图" type="Sprite2D" parent="." unique_id=2110371988]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156065904]
 texture = ExtResource("1_uwrxv")
@@ -13,3 +21,31 @@ texture = ExtResource("1_uwrxv")
 
 [node name="Tree" parent="." unique_id=1758964196 instance=ExtResource("3_lnu2h")]
 position = Vector2(103, 243)
+
+[node name="Borders" type="Node2D" parent="." unique_id=1639341892]
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=771779552]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3" unique_id=2101832593]
+visible = false
+position = Vector2(0, -338.75)
+shape = SubResource("RectangleShape2D_j3v6u")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders" unique_id=886974030]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4" unique_id=1112766139]
+visible = false
+position = Vector2(0, 338.75)
+shape = SubResource("RectangleShape2D_j3v6u")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders" unique_id=850220787]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=1804188846]
+position = Vector2(-227.5, 0)
+shape = SubResource("RectangleShape2D_kkxu0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders/StaticBody2D" unique_id=28341179]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D/StaticBody2D" unique_id=1205454026]
+position = Vector2(227.5, 0)
+shape = SubResource("RectangleShape2D_kkxu0")

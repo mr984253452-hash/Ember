@@ -9,6 +9,8 @@ size = Vector2(8, 10)
 [node name="Player" type="CharacterBody2D" unique_id=1479036607]
 script = ExtResource("1_g2els")
 
+[node name="动态碰撞" type="CharacterBody2D" parent="." unique_id=1575596553]
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=930821223]
 texture = ExtResource("1_3vyb7")
 
