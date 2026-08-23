@@ -22,10 +22,10 @@ func animation():                                            # 重建角色移�
 		if direction. x != 0:                                # 判断左右移动还是上下移动,为了向卸下走 脸是朝向左右
 			$AnimatedSprite2D.animation = "left"             # 判断为左右移动
 		else:
-			$AnimatedSprite2D.animation = 'up' if direction.y < 0 else 'down'
-#			if direction. y < 0:
-#				$AnimatedSprite2D.animation = 'up'           # 播放向上动画
-#			else:
-#				$AnimatedSprite2D.animation = 'down'         # 播放向下动画
+#			$AnimatedSprite2D.animation = 'up' if direction.y < 0 else 'down' # 下方4行判断的简写
+			if direction. y < 0:
+				$AnimatedSprite2D.animation = 'up'           # 播放向上动画
+			else:
+				$AnimatedSprite2D.animation = 'down'         # 播放向下动画
 	else:
 		$AnimatedSprite2D.frame = 0                          # 设定精灵帧的待机帧

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dkm8abaqg83um"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vka04"]
+size = Vector2(10, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g5osr"]
+
+[node name="静态贴图" type="Sprite2D" unique_id=662816711]
+
+[node name="相机" type="Camera2D" parent="." unique_id=332193140]
+limit_enabled = false
+
+[node name="静态碰撞" type="StaticBody2D" parent="." unique_id=1423489992]
+
+[node name="碰撞形状" type="CollisionShape2D" parent="静态碰撞" unique_id=1756154051]
+visible = false
+shape = SubResource("RectangleShape2D_vka04")
+
+[node name="动态碰撞" type="CharacterBody2D" parent="." unique_id=487743724]
+
+[node name="碰撞形状" type="CollisionShape2D" parent="动态碰撞" unique_id=1651452464]
+visible = false
+shape = SubResource("RectangleShape2D_vka04")
+
+[node name="创建动画切换精灵帧" type="AnimatedSprite2D" parent="." unique_id=1735020663]
+sprite_frames = SubResource("SpriteFrames_g5osr")
+
+[node name="计时器" type="Timer" parent="." unique_id=1158757152]

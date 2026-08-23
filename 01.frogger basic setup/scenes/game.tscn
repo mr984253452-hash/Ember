@@ -12,8 +12,6 @@ size = Vector2(71, 720)
 
 [node name="Game" type="Node2D" unique_id=1831773614]
 
-[node name="静态贴图" type="Sprite2D" parent="." unique_id=2110371988]
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156065904]
 texture = ExtResource("1_uwrxv")
 
@@ -44,8 +42,12 @@ shape = SubResource("RectangleShape2D_j3v6u")
 position = Vector2(-227.5, 0)
 shape = SubResource("RectangleShape2D_kkxu0")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Borders/StaticBody2D" unique_id=28341179]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders" unique_id=28341179]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D/StaticBody2D" unique_id=1205454026]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2" unique_id=1205454026]
 position = Vector2(227.5, 0)
 shape = SubResource("RectangleShape2D_kkxu0")
+
+[node name="Timer" type="Timer" parent="." unique_id=1531811868]
+wait_time = 4.0
+autostart = true
