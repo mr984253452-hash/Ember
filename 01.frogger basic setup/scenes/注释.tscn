@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dkm8abaqg83um"]
 
+[ext_resource type="Texture2D" uid="uid://bkgrir378horu" path="res://graphics/player/player_simple.png" id="1_g5osr"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vka04"]
 size = Vector2(10, 18)
 
@@ -37,3 +39,20 @@ polygon = PackedVector2Array(-194, -317, 193, -318, 192, -132, -192, -131)
 [node name="检测物体进入或离开屏幕" type="VisibleOnScreenEnabler2D" parent="." unique_id=2042707072]
 
 [node name="多个坐标摆放器" type="Marker2D" parent="." unique_id=100915783]
+
+[node name="纯色矩形背景板" type="ColorRect" parent="." unique_id=917967728]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="字体" type="Label" parent="." unique_id=997623162]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="界面展示图片" type="TextureRect" parent="." unique_id=1363245373]
+offset_left = 629.0
+offset_top = 321.0
+offset_right = 669.0
+offset_bottom = 361.0
+texture = ExtResource("1_g5osr")
+
+[node name="画布层用于主场景固定文字位置" type="CanvasLayer" parent="." unique_id=1312146134]
