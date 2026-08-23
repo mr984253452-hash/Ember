@@ -33,3 +33,5 @@ sprite_frames = SubResource("SpriteFrames_g5osr")
 
 [node name="绘制检测区域" type="CollisionPolygon2D" parent="检测进入" unique_id=491798058]
 polygon = PackedVector2Array(-194, -317, 193, -318, 192, -132, -192, -131)
+
+[node name="检测物体进入或离开屏幕" type="VisibleOnScreenEnabler2D" parent="." unique_id=2042707072]

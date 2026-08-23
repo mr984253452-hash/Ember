@@ -14,16 +14,10 @@ size = Vector2(71, 720)
 [node name="Game" type="Node2D" unique_id=1831773614]
 script = ExtResource("1_lbhrr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156065904]
+[node name="BG" type="Sprite2D" parent="." unique_id=1156065904]
 texture = ExtResource("1_uwrxv")
 
-[node name="Player" parent="." unique_id=418672599 instance=ExtResource("2_yqjtg")]
-
-[node name="Tree" parent="." unique_id=1758964196 instance=ExtResource("3_lnu2h")]
-position = Vector2(103, 243)
-
 [node name="Borders" type="Node2D" parent="." unique_id=1639341892]
-visible = false
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=771779552]
 
@@ -49,15 +43,22 @@ shape = SubResource("RectangleShape2D_kkxu0")
 position = Vector2(227.5, 0)
 shape = SubResource("RectangleShape2D_kkxu0")
 
-[node name="Timer" type="Timer" parent="." unique_id=1531811868]
-wait_time = 4.0
-one_shot = true
+[node name="Timers" type="Node2D" parent="." unique_id=288792677]
+
+[node name="Timer" type="Timer" parent="Timers" unique_id=1531811868]
 autostart = true
+
+[node name="Objects" type="Node2D" parent="." unique_id=260690374]
+
+[node name="Player" parent="Objects" unique_id=418672599 instance=ExtResource("2_yqjtg")]
+
+[node name="Tree" parent="Objects" unique_id=1758964196 instance=ExtResource("3_lnu2h")]
+position = Vector2(103, 243)
 
 [node name="FinishArea2D" type="Area2D" parent="." unique_id=1344000019]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishArea2D" unique_id=1220877732]
 polygon = PackedVector2Array(-187, -314, 185, -314, 184, -133, -186, -135)
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="FinishArea2D" to="." method="_on_area_2d_body_entered"]
