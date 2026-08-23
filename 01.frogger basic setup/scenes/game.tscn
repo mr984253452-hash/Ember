@@ -51,8 +51,11 @@ shape = SubResource("RectangleShape2D_kkxu0")
 [node name="Timers" type="Node2D" parent="." unique_id=288792677]
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="Timers" unique_id=1531811868]
+[node name="CarTimer" type="Timer" parent="Timers" unique_id=1531811868]
 wait_time = 0.15
+autostart = true
+
+[node name="SomeTimer" type="Timer" parent="Timers" unique_id=2099452570]
 autostart = true
 
 [node name="Objects" type="Node2D" parent="." unique_id=260690374]
@@ -116,7 +119,9 @@ offset_bottom = 43.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_iywne")
 theme_override_font_sizes/font_size = 50
-text = "Some text"
+text = "Time elapsed:  0"
+horizontal_alignment = 1
 
-[connection signal="timeout" from="Timers/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/CarTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/SomeTimer" to="." method="_on_some_timer_timeout"]
 [connection signal="body_entered" from="FinishArea2D" to="." method="_on_area_2d_body_entered"]
