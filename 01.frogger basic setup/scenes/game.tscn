@@ -18,6 +18,7 @@ script = ExtResource("1_lbhrr")
 texture = ExtResource("1_uwrxv")
 
 [node name="Borders" type="Node2D" parent="." unique_id=1639341892]
+visible = false
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=771779552]
 
@@ -59,6 +60,36 @@ position = Vector2(103, 243)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishArea2D" unique_id=1220877732]
 polygon = PackedVector2Array(-187, -314, 185, -314, 184, -133, -186, -135)
+
+[node name="CarStartPosition" type="Node2D" parent="." unique_id=253525206]
+
+[node name="Marker2D" type="Marker2D" parent="CarStartPosition" unique_id=1141409439]
+position = Vector2(-197, 167)
+
+[node name="Marker2D2" type="Marker2D" parent="CarStartPosition" unique_id=354965337]
+position = Vector2(-199, 140)
+
+[node name="Marker2D3" type="Marker2D" parent="CarStartPosition" unique_id=91754523]
+position = Vector2(200, 117)
+
+[node name="Marker2D4" type="Marker2D" parent="CarStartPosition" unique_id=1371425822]
+position = Vector2(-198, 94)
+
+[node name="Marker2D5" type="Marker2D" parent="CarStartPosition" unique_id=994735557]
+position = Vector2(-198, 2)
+
+[node name="Marker2D6" type="Marker2D" parent="CarStartPosition" unique_id=1275527587]
+position = Vector2(200, -24)
+
+[node name="Marker2D7" type="Marker2D" parent="CarStartPosition" unique_id=1131129230]
+position = Vector2(200, -49)
+
+[node name="Marker2D8" type="Marker2D" parent="CarStartPosition" unique_id=1331529892]
+position = Vector2(-203, -91)
+
+[node name="Marker2D9" type="Marker2D" parent="CarStartPosition" unique_id=1656007626]
+visible = false
+position = Vector2(200, -115)
 
 [connection signal="timeout" from="Timers/Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="FinishArea2D" to="." method="_on_area_2d_body_entered"]

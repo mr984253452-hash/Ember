@@ -35,3 +35,5 @@ sprite_frames = SubResource("SpriteFrames_g5osr")
 polygon = PackedVector2Array(-194, -317, 193, -318, 192, -132, -192, -131)
 
 [node name="检测物体进入或离开屏幕" type="VisibleOnScreenEnabler2D" parent="." unique_id=2042707072]
+
+[node name="多个坐标摆放器" type="Marker2D" parent="." unique_id=100915783]
