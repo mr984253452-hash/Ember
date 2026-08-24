@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cscpbiiwu40li"]
 
 [ext_resource type="PackedScene" uid="uid://c7y1s5tx16k0c" path="res://scenes/entities/Player.tscn" id="1_fbh41"]
+[ext_resource type="Script" uid="uid://bv05tk4tkvc6d" path="res://scenes/levels/lecel.gd" id="1_irsys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v6u"]
 size = Vector2(505, 325)
 
 [node name="Lecel" type="Node2D" unique_id=917463343]
+script = ExtResource("1_irsys")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1844601084]
 
@@ -19,3 +21,5 @@ shape = SubResource("RectangleShape2D_j3v6u")
 position = Vector2(250, 154)
 jump_strength = 400
 gravity = 1000
+
+[connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
