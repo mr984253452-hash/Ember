@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkm8abaqg83um"]
 
 [ext_resource type="Texture2D" uid="uid://bkgrir378horu" path="res://graphics/player/player_simple.png" id="1_g5osr"]
+[ext_resource type="Script" uid="uid://iuk3bsvbgn60" path="res://scenes/注释.gd" id="1_vbua4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vka04"]
 size = Vector2(10, 18)
@@ -8,8 +9,10 @@ size = Vector2(10, 18)
 [sub_resource type="SpriteFrames" id="SpriteFrames_g5osr"]
 
 [node name="基础节点" type="Node2D" unique_id=720914940]
+script = ExtResource("1_vbua4")
 
 [node name="静态贴图" type="Sprite2D" parent="." unique_id=1808266401]
+visible = false
 
 [node name="相机" type="Camera2D" parent="." unique_id=45276996]
 limit_enabled = false

@@ -2,15 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://nss02ym145bd" path="res://graphics/fire/default.png" id="1_2flq5"]
 
-[sub_resource type="GDScript" id="GDScript_ma0cl"]
-script/source = "extends Node2D
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v6u"]
 size = Vector2(4, 2)
 
 [node name="bullet" type="Area2D" unique_id=1871281146]
-script = SubResource("GDScript_ma0cl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1599944628]
 shape = SubResource("RectangleShape2D_j3v6u")
