@@ -17,3 +17,5 @@ shape = SubResource("RectangleShape2D_j3v6u")
 
 [node name="Player" parent="Entities" unique_id=1721107230 instance=ExtResource("1_fbh41")]
 position = Vector2(250, 154)
+jump_strength = 400
+gravity = 1000
