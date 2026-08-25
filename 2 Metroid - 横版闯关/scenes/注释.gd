@@ -7,10 +7,10 @@ extends Node2D
 
 ################################################
 
-# 一
+# 一 俯视角
 # 位置方向
-# var direction： Vector2 = 	Vector2.({初始坐标位置})                              # 创建二维初始坐标变量
-# var direction = Vector2.LEFT                                                  # 指定方向左侧
+# var direction： Vector2 = 	Vector2({初始坐标位置})                              # 创建二维初始坐标变量
+# var direction = Vector2.LEFT                                                  # 指定方向左侧,RIGHT右
 #	if position.x < 0:                                                          # 判断在画面左侧还是右侧
 #		direction.x = 1                                                         # 和下面的速度配合来取到相反的方向
 #       ${贴图节点名}.flip_h = true                                               # 贴图翻转
@@ -47,7 +47,7 @@ extends Node2D
 
 # 调用 预加载 实例化 生成显示图片  
 # var {变量名}_scene : PackedScene = preload("{文件位置}")                         # 置顶调用打包，PackedScene 设为打包格式
-# var {变量名} = {变量名}_scene.instan	tiate()                                     # 实例化
+# var {变量名} = {变量名}_scene.instantiate()                                     # 实例化
 # ${生成的节点}.add_child(变量名)                                                  # 实例挂载
 
 # 从多个坐标点随机抽取一个坐标生成物体
@@ -80,3 +80,21 @@ extends Node2D
 # 循环播放AndioStreamPlayer.Parameters
 
 ################################################
+
+# 二 横版跳跃
+# 方向
+# var direction_x : float          # 只有左右
+# velocity.y = -10                 # 跳跃10
+# velocity.y += 10                 # 重力
+ 
+# 函数
+# direction_x = Input.get_axis("left","right")    # 只有左右的移动
+
+# 导出至面板
+# @export   # 关键字,运行也可修改
+# signal    # 信号,导出信号的参数
+
+# 计时冷却
+# ${计时器节点名}.time_left == 0    # 作为判断
+# ${计时器节点名}.start()           # 作为开启
+ 
