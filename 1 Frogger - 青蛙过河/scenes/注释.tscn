@@ -12,7 +12,6 @@ size = Vector2(10, 18)
 script = ExtResource("1_vbua4")
 
 [node name="静态贴图" type="Sprite2D" parent="." unique_id=1808266401]
-visible = false
 
 [node name="相机" type="Camera2D" parent="." unique_id=45276996]
 limit_enabled = false
@@ -42,6 +41,13 @@ polygon = PackedVector2Array(-194, -317, 193, -318, 192, -132, -192, -131)
 [node name="检测物体进入或离开屏幕" type="VisibleOnScreenEnabler2D" parent="." unique_id=2042707072]
 
 [node name="多个坐标摆放器" type="Marker2D" parent="." unique_id=100915783]
+
+[node name="用户界面创建" type="Control" parent="." unique_id=1418365331]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="纯色矩形背景板" type="ColorRect" parent="." unique_id=917967728]
 offset_right = 40.0
