@@ -9,7 +9,7 @@ extends Node2D
 
 # 一 俯视角
 # 位置方向
-# var direction： Vector2 = 	Vector2({初始坐标位置})                              # 创建二维初始坐标变量
+# var direction: Vector2 = Vector2({初始坐标位置})                                # 创建二维初始坐标变量
 # var direction = Vector2.LEFT                                                  # 指定方向左侧,RIGHT右
 #	if position.x < 0:                                                          # 判断在画面左侧还是右侧
 #		direction.x = 1                                                         # 和下面的速度配合来取到相反的方向
@@ -98,3 +98,5 @@ extends Node2D
 # ${计时器节点名}.time_left == 0    # 作为判断
 # ${计时器节点名}.start()           # 作为开启
  
+# 实例化场景到指定坐标
+# {变量名} = {位置}
