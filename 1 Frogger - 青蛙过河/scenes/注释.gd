@@ -8,8 +8,9 @@ extends Node2D
 ################################################
 
 # 一
-# 初始定义方向度
+# 初始定义位置方向
 # var direction： Vector2 = 	Vector2.({初始坐标位置}) # 创建二维初始坐标变量
+# var direction = Vector2.LEFT                    # 指定方向左侧
 # var speed： {整数/浮点数} = {数值}                  # 定义速度变量
 
 # 持续函数
@@ -34,11 +35,27 @@ extends Node2D
 #	if direction:                                                                # 检测是否存在移动方向
 #		${动画节点名}.flip_h = direction.x > 0                                     # 左右播放动画的翻转
 #		if direction. x != 0:                                                    # 判断左右移动还是上下移动,为了向卸下走 脸是朝向左右
-#			${动画节点名}.animation = "left"                                 # 判断为左右移动
+#			${动画节点名}.animation = "left"                                       # 判断为左右移动
 #		else:
-#			${动画节点名}.animation = 'up' if direction.y < 0 else 'down'    # 播放向上下动画
+#			${动画节点名}.animation = 'up' if direction.y < 0 else 'down'          # 播放向上下动画
 #	else:                                                                        # 设定精灵帧的待机帧
 #		${动画节点名}.frame = 0 
+
+# 调用 预加载 实例化 生成显示图片  
+# var {变量名}_scene : PackedScene = preload("{文件位置}")  # 置顶调用打包，PackedScene 设为打包格式
+# var {变量名} = {变量名}_scene.instantiate()               # 实例化
+# ${生成的节点}.add_child(变量名)                          # 实例挂载
+
+# 从多个坐标点随机抽取一个坐标生成物体
+# var {变量名}_marker = ${生成的节点}.get_children().pick_random()  # gat_children() 返回该节点所有子节点,pick_random() 随机抽取一个节点
+# car.position = {变量名}_marker.position                 # 读取坐标 
+
+# 信号与函数
+# 计时器                               # 开启一次 开启自动触发
+# 进入当前区域信号                       # Area2D 的 bodt_entered(body:Node2D)
+# 进入屏幕信号                          # screen_entered()
+# 离开屏幕信号                          # screen_exited()
+# 销毁指令函数                          # queue_free() 
 ################################################
 
 
@@ -53,13 +70,6 @@ extends Node2D
 
 
 
- 
-
-# 预加载 实例化 生成显示图片
-# var {变量名}_scene = preload("{文件位置}")
-# var {变量名} = {变量名}_scene.instantiate()
-# ${生成的子节点}.add_child(变量名)
 
 
-# 销毁指令函数
-# queue_free()                                               
+											  
