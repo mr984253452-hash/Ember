@@ -69,3 +69,5 @@ offset_bottom = 361.0
 [node name="2D声音播放 远了会变小" type="AudioStreamPlayer2D" parent="." unique_id=2116383648]
 
 [node name="创建动画" type="AnimationPlayer" parent="." unique_id=1923734347]
+
+[node name="瓦片图层" type="TileMapLayer" parent="." unique_id=1374498778]

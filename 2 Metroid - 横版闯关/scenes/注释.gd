@@ -87,8 +87,9 @@ extends Node2D
 # velocity.y = -10                 # 跳跃10
 # velocity.y += 10                 # 重力
  
-# 函数
+# 移动 跳跃
 # direction_x = Input.get_axis("left","right")    # 只有左右的移动
+# if is_on_floor():                               # 判断玩家是否在地面上
 
 # 导出至面板
 # @export   # 关键字,运行也可修改
@@ -99,15 +100,24 @@ extends Node2D
 # ${计时器节点名}.start()           # 作为开启
  
 # 创建动画
-# 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧frame，右键插入关键帧,自动循环播放
 # 行走动画1.4秒
+# 跳跃动画不自动
+# 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧frame，右键插入关键帧,自动循环播放
 # ${动画节点名}.current_animation = '{动作名1}' if direction_x else '{动作名2}'    # 播放动画判断切换
+
+# 缩放动画
+# 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧scale，右键插入关键帧
+# ${动画名}.play("动作名")        # 调用
+
+# 补间动画
+# var tween = get_tree().create_tween()
+# tween.tween_property(${贴图节点名},'{需变换的属性}'Vector2(变化的数值),变化时间).from(Vector2(起始数值))
 
 # 鼠标朝向对应动画帧
 # 建立字典
 #const {新建字典名} = {
-#	Vector2i(1,0):   0,
-#	Vector2i(1,1):   1,
+#	Vector2i(1,1):   0,
+#	Vector2i(1,0):   1,
 #	Vector2i(0,1):   2,
 #	Vector2i(-1,1):  3,
 #	Vector2i(-1,0):  4,
@@ -115,8 +125,16 @@ extends Node2D
 #	Vector2i(0,-1):  6,
 #	Vector2i(1,-1):  7,
 #}
+# var raw_dir = get_local_mouse_position().normalized()                        # 方向归一化
+# var adjusted_dir = Vector2i(round(raw_dir.x),round(raw_dir.y))               # 鼠标位置四舍五入
+# $Torso.frame = gun_directions[adjusted_dir]                                  # 字典关联四舍五入取值
+
+# 瓦片图层
+# 面板新建瓦片集 再次点击瓦片新建出现详细选项
+# 碰撞层 开启详细选项的状态下TileMapLayer,Physics Layers 
+# 碰撞设置 底下TileSet 是碰撞设置,绘制,物理层0
+# 图层CanvasItem,Ordering,Zlndex
+# 复制瓦片 下方面板鼠标图案后框选
 
 # 实用函数
 # position = {坐标} + {方向} * 10                   # 以玩家为中心 朝鼠标方向偏移 10
-# if is_on_floor():                               # 判断玩家是否在地面上
-# Vector2(round(raw_dir.x),round(raw_dir.y))      # 鼠标位置四舍五入
