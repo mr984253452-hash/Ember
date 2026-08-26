@@ -9,7 +9,7 @@ extends Node2D
 
 # 一 俯视角
 # 位置方向
-# var direction: Vector2 = Vector2({初始坐标位置})                                # 创建二维初始坐标变量
+# var direction: Vector2 = Vector2                                              # 所有二维向量都要创建
 # var direction = Vector2.LEFT                                                  # 指定方向左侧,RIGHT右
 #	if position.x < 0:                                                          # 判断在画面左侧还是右侧
 #		direction.x = 1                                                         # 和下面的速度配合来取到相反的方向
@@ -37,13 +37,13 @@ extends Node2D
 # 记得调用函数
 # func animation():
 #	if direction:                                                               # 检测是否存在移动方向
-#		${动画节点名}.flip_h = direction.x > 0                                    # 左右播放动画的翻转
+#		${精灵帧贴图节点名}.flip_h = direction.x > 0                                    # 左右播放动画的翻转
 #		if direction. x != 0:                                                   # 判断左右移动还是上下移动,为了向卸下走 脸是朝向左右
-#			${动画节点名}.animation = "left"                                      # 判断为左右移动
+#			${精灵帧贴图节点名}.animation = "left"                                      # 判断为左右移动
 #		else:
-#			${动画节点名}.animation = 'up' if direction.y < 0 else 'down'         # 播放向上下动画
+#			${精灵帧贴图节点名}.animation = 'up' if direction.y < 0 else 'down'         # 播放向上下动画
 #	else:                                                                       # 设定精灵帧的待机帧
-#		${动画节点名}.frame = 0 
+#		${精灵帧贴图节点名}.frame = 0 
 
 # 调用 预加载 实例化 生成显示图片  
 # var {变量名}_scene : PackedScene = preload("{文件位置}")                         # 置顶调用打包，PackedScene 设为打包格式
@@ -98,5 +98,25 @@ extends Node2D
 # ${计时器节点名}.time_left == 0    # 作为判断
 # ${计时器节点名}.start()           # 作为开启
  
-# 实例化场景到指定坐标
-# {变量名} = {位置}
+# 创建动画
+# 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧frame，右键插入关键帧,自动循环播放
+# 行走动画1.4秒
+# ${动画节点名}.current_animation = '{动作名1}' if direction_x else '{动作名2}'    # 播放动画判断切换
+
+# 鼠标朝向对应动画帧
+# 建立字典
+#const {新建字典名} = {
+#	Vector2i(1,0):   0,
+#	Vector2i(1,1):   1,
+#	Vector2i(0,1):   2,
+#	Vector2i(-1,1):  3,
+#	Vector2i(-1,0):  4,
+#	Vector2i(-1,-1): 5,
+#	Vector2i(0,-1):  6,
+#	Vector2i(1,-1):  7,
+#}
+
+# 实用函数
+# position = {坐标} + {方向} * 10                   # 以玩家为中心 朝鼠标方向偏移 10
+# if is_on_floor():                               # 判断玩家是否在地面上
+# Vector2(round(raw_dir.x),round(raw_dir.y))      # 鼠标位置四舍五入

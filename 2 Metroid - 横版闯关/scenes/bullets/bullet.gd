@@ -1,4 +1,10 @@
 extends Area2D
 
-func setup(pos: Vector2, dir: Vector2):
-	position = pos
+var direction : Vector2                                # 创建向量
+
+func setup(pos: Vector2, dir: Vector2):                # 自动方向
+	position = pos + dir * 16                          # 子弹位置+偏移
+	direction = dir                                    # 子弹向量
+
+func _physics_process(delta: float) -> void:           # 子弹发射速度
+	position += direction * 30 * delta       
