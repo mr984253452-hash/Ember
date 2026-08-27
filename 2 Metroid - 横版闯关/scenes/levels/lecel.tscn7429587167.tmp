@@ -3712,15 +3712,7 @@ jump_strength = 400
 gravity = 1000
 
 [node name="Drone" parent="Entities" unique_id=433135790 instance=ExtResource("5_31hox")]
-position = Vector2(395, 128)
-
-[node name="Drone2" parent="Entities" unique_id=454340965 instance=ExtResource("5_31hox")]
-visible = false
-position = Vector2(386, 109)
-
-[node name="Drone3" parent="Entities" unique_id=787277452 instance=ExtResource("5_31hox")]
-visible = false
-position = Vector2(393, 110)
+position = Vector2(394, 115)
 
 [node name="bullets" type="Node2D" parent="." unique_id=304057092]
 

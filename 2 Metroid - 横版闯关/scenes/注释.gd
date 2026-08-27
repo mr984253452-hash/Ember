@@ -106,7 +106,7 @@ extends Node2D
 # 行走动画1.4秒
 # 跳跃动画不自动
 # 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧frame，右键插入关键帧,自动循环播放
-# ${动画节点名}.current_animation = '{动作名1}' if direction_x else '{动作名2}'    # 播放动画判断切换
+# ${动画节点名}.current_animation = '{播放动作}' if direction_x else '{动作名2}'    # 播放动画判断切换
 
 # 缩放动画
 # 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧scale，右键插入关键帧
@@ -128,7 +128,8 @@ extends Node2D
 #	Vector2i(0,-1):  6,
 #	Vector2i(1,-1):  7,
 #}
-# var raw_dir = get_local_mouse_position().normalized()                        # 方向归一化
+
+# var raw_dir = get_local_mouse_position().normalized()                        # get_local_mouse_position() 用于获得以脚本为中心的相对位置鼠标位置, normalized() 用作归一化
 # var adjusted_dir = Vector2i(round(raw_dir.x),round(raw_dir.y))               # 鼠标位置四舍五入
 # $Torso.frame = gun_directions[adjusted_dir]                                  # 字典关联四舍五入取值
 
@@ -139,5 +140,33 @@ extends Node2D
 # 图层CanvasItem,Ordering,Zlndex
 # 复制瓦片 下方面板鼠标图案后框选
 
+
+
+# 追随玩家
+# var player : CharacterBody2D      # 建立追随对象指定类型
+# func _on_detection_area_body_entered(Player_bodt: CharacterBody2D) -> void:    # 传入追随对象坐标
+#	player = Player_bodt
+#func _physics_process(delta: float) -> void:                                    # 建立每帧更新坐标追随
+#	if player:                                                                   # 判断是否 存在记录坐标
+#		var dir = (player.position - position).normalized()                      # 两个对象之间坐标相减并归一化
+#		velocity = dir * speed
+#		move_and_slide()
+#player = null                                                                   # 离开检测时清除player内数据
+
+# 分组
+# 打印所有分组内节点
+#func _ready() -> void:
+#	print(get_tree().get_nodes_in_group('{分组名}'))
+# 从分组取出坐标 ,计算距离执行函数
+#	for drone in get_tree().get_nodes_in_group('{分组名}'):
+#		if position.distance_to(drone.position) < 10:                               # 判断 取出的坐标距离小于10像素
+#			drone.{函数名}()                                                         # 小于调用爆炸函数
+
 # 实用函数
 # position = {坐标} + {方向} * 10                   # 以玩家为中心 朝鼠标方向偏移 10
+# ${节点名}.show()                                  # 显示节点贴图
+# ${节点名}.hide()                                  # 隐藏节点贴图
+# await  ${动画名}.animation_finished               # 播放完动画
+# func _on_detection_area_body_entered({检测节点名}: {检测类型}) -> void: # 检测进入修改
+# if '{函数名} ' in body:                                # 判断 body 内部是否有指定函数名
+# body.{函数名}                                     # 连锁执行参数,触发函数内部的参数，可以是另一个文件的函数
