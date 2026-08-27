@@ -8,6 +8,9 @@ extends Node2D
 ################################################
 
 # 一 俯视角
+# 导入
+# var {变量名}_scene = preload("{文件路径}.tscn")
+
 # 位置方向
 # var direction: Vector2 = Vector2                                              # 所有二维向量都要创建
 # var direction = Vector2.LEFT                                                  # 指定方向左侧,RIGHT右
@@ -107,7 +110,7 @@ extends Node2D
 
 # 缩放动画
 # 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧scale，右键插入关键帧
-# ${动画名}.play("动作名")        # 调用
+# ${动画名}.play("{动作名}")        # 调用
 
 # 补间动画
 # var tween = get_tree().create_tween()
