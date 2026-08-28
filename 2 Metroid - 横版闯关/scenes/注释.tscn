@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://dkm8abaqg83um"]
 
 [ext_resource type="Script" uid="uid://iuk3bsvbgn60" path="res://scenes/注释.gd" id="1_vbua4"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="2_vbua4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vka04"]
 size = Vector2(10, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g5osr"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_etf7s"]
 
 [node name="基础节点" type="Node2D" unique_id=720914940]
 script = ExtResource("1_vbua4")
@@ -71,3 +74,12 @@ offset_bottom = 361.0
 [node name="创建动画" type="AnimationPlayer" parent="." unique_id=1923734347]
 
 [node name="瓦片图层" type="TileMapLayer" parent="." unique_id=1374498778]
+
+[node name="太阳光" type="DirectionalLight2D" parent="." unique_id=964051168]
+
+[node name="太阳光阴影" type="LightOccluder2D" parent="." unique_id=742199193]
+position = Vector2(-108, 7)
+occluder = SubResource("OccluderPolygon2D_etf7s")
+
+[node name="灯泡" type="PointLight2D" parent="." unique_id=1285548483]
+texture = ExtResource("2_vbua4")

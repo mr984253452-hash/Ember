@@ -108,12 +108,35 @@ extends Node2D
 # 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧frame，右键插入关键帧,自动循环播放
 # ${动画节点名}.current_animation = '{播放动作}' if direction_x else '{动作名2}'    # 播放动画判断切换
 
+# 关键帧动画
+# 在需执行函数的动漫面板下添加调用方法轨道,在指定针下右键添加函数(需保存)
+
 # 缩放动画
 # 创建静态贴图放入精灵帧，添加节点AnimationPlayer，动画新建输入动画名，左上加号属性轨道，选择精灵帧scale，右键插入关键帧
 # ${动画名}.play("{动作名}")        # 调用
 
+# 明暗动画
+# 使用灯泡后 添加 属性轨道 energy 动画
+
+# 着色器
+# 2d  选择贴图节点后,CanvasItem,material,material,shader,VisualShader,Canvas Iten
+# Vertex 是颜色 Color 是透明度 灰色是填入浮点数 不同深浅代表各类向量数据
+# 给贴图图像整图添加颜色  ColorConstant  连接Color
+# 给贴图图像添加颜色 Color 连接Color
+# 透明度 FioatConstant 连接 Alpha
+# 计算浮点数运算 multiply(*) 图像是FL匕
+# 设置半透明用 Color + FloatConstant 连接到 multiply(*) 再连到 Alpha
+# 面板颜色参数节点 colorpara 可添加至面板利用函数调节
+# 两种颜色做混合 调节占比 mix3维
+# 面板浮点数 FloatParameter
+
+# 函数修改面板参数
+# {节点名}.根路径.set_{第二个折叠路径}('{参数名}',{修改数值})
+# 补间函数 tween.tween_property({节点名}.根路径,'{第二个折叠路径}/{参数名}',{修改数值},{持续时间})
+
 # 补间动画
 # var tween = get_tree().create_tween()
+# tween.set_loops()                             # 括号内填循环次数
 # tween.tween_property(${贴图节点名},'{需变换的属性}'Vector2(变化的数值),变化时间).from(Vector2(起始数值))
 
 # 鼠标朝向对应动画帧
@@ -139,8 +162,6 @@ extends Node2D
 # 碰撞设置 底下TileSet 是碰撞设置,绘制,物理层0
 # 图层CanvasItem,Ordering,Zlndex
 # 复制瓦片 下方面板鼠标图案后框选
-
-
 
 # 追随玩家
 # var player : CharacterBody2D      # 建立追随对象指定类型
@@ -170,3 +191,10 @@ extends Node2D
 # func _on_detection_area_body_entered({检测节点名}: {检测类型}) -> void: # 检测进入修改
 # if '{函数名} ' in body:                                # 判断 body 内部是否有指定函数名
 # body.{函数名}                                     # 连锁执行参数,触发函数内部的参数，可以是另一个文件的函数
+# ${声音节点名}.play()                               # 调用音乐
+
+# 灯光
+# 太阳光需要调到混合模式 Mix 才能与别的灯泡一起生效
+# 太阳光可以 添加剪去当前灯光 Light2D,Blend_mode
+# 添加太阳光阴影时 需要勾选太阳光节点的阴影
+# 灯泡可以自定义渐变光源贴图 GradientTexture2D

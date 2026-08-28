@@ -1,0 +1,28 @@
+[gd_resource type="VisualShader" format=3 uid="uid://cd5dha121saen"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_xlq4y"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ktprn"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_lfgi2"]
+constant = Color(1, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ag82r"]
+operator = 2
+
+[resource]
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(426.66666, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_xlq4y")
+nodes/fragment/2/position = Vector2(-373.33334, 53.333332)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_ktprn")
+nodes/fragment/3/position = Vector2(-80, 346.66666)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorConstant_lfgi2")
+nodes/fragment/5/position = Vector2(40, 40)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatOp_ag82r")
+nodes/fragment/6/position = Vector2(173.33333, 266.66666)
+nodes/fragment/connections = PackedInt32Array(3, 0, 6, 1, 2, 4, 6, 0, 6, 0, 0, 1)

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cgh7234wked4l" path="res://graphics/tilesets/walls.png" id="3_8bybg"]
 [ext_resource type="Texture2D" uid="uid://c7v0ifpdabs2i" path="res://graphics/tilesets/subway.png" id="3_fecck"]
 [ext_resource type="PackedScene" uid="uid://jolhvsfm1d1o" path="res://scenes/entities/drone.tscn" id="5_31hox"]
+[ext_resource type="Texture2D" uid="uid://6j2he24a4uda" path="res://graphics/lights/l3.png" id="6_xxomk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31hox"]
 texture = ExtResource("3_fecck")
@@ -3712,16 +3713,17 @@ jump_strength = 400
 gravity = 1000
 
 [node name="Drone" parent="Entities" unique_id=433135790 instance=ExtResource("5_31hox")]
-position = Vector2(395, 128)
-
-[node name="Drone2" parent="Entities" unique_id=454340965 instance=ExtResource("5_31hox")]
-visible = false
-position = Vector2(386, 109)
-
-[node name="Drone3" parent="Entities" unique_id=787277452 instance=ExtResource("5_31hox")]
-visible = false
-position = Vector2(393, 110)
+position = Vector2(405, 116)
 
 [node name="bullets" type="Node2D" parent="." unique_id=304057092]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=938335066]
+color = Color(0.6556008, 0.6556009, 0.6556008, 1)
+blend_mode = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=839245551]
+position = Vector2(304, 152)
+energy = 1.24
+texture = ExtResource("6_xxomk")
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

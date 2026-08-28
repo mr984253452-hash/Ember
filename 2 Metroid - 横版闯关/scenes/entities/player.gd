@@ -24,7 +24,7 @@ func gat_input():                                                               
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0 :  # 射击判断,读取计时器剩余时间,并在计时器面板启用单词计时 
 		shoot.emit(position,get_local_mouse_position().normalized())            # 给新信号传输坐标和方向, get_local_mouse_position() 用于获得以脚本为中心的相对位置鼠标位置, normalized() 用作归一化来给子弹做指引方向
 		$ReloadTimer.start()
-		var tween = get_tree().create_tween()
+		var tween = get_tree().create_tween()                                    # 鼠标准星射击动画
 		tween.tween_property($Marker,'scale',Vector2(0.1,0.1),0.2)
 		tween.tween_property($Marker,'scale',Vector2(0.5,0.5),0.5)
 

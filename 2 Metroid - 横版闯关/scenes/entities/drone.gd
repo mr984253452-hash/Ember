@@ -19,17 +19,21 @@ func _on_detection_area_body_exited(_Player_bodt: CharacterBody2D) -> void:     
 	player = null                                                               # 清除player内数据
 
 
-func _on_collsion_area_body_entered(body: Node2D) -> void:                          # 爆炸动画
+func _on_collsion_area_body_entered(_body: Node2D) -> void:                          # 爆炸动画
 	explode()
 
 func hit():                             # 命中生命计算
 	health -= 1
 	if health == 0:
 		explode()
-
+	var tween = get_tree().create_tween()                                       # 受击补间动画
+	tween.tween_property($AnimatedSprite2D.material,'shader_parameter/Progress',0.0,0.2)
+	tween.tween_property($AnimatedSprite2D.material,'shader_parameter/Progress',1.0,0.5)
+	
 func explode():                         # 爆炸动画
 	speed = 0                                                                       # 碰到玩家停止移动
-	$Drone.hide()                                                                   # 隐藏待机动画
+	$AnimatedSprite2D.hide()                                                        # 隐藏待机动画
+	$AudioStreamPlayer2D.play()
 	$ExplosionSprite.show()                                                         # 显示爆炸动画
 	$AnimationPlayer.current_animation = 'explode'                                  # 切换播放爆炸动画
 	await  $AnimationPlayer.animation_finished                                      # 等待爆炸动画播放完

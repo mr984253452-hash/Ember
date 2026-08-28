@@ -2,14 +2,78 @@
 
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_gs6nb"]
 [ext_resource type="Script" uid="uid://cqu8uq7o3bnde" path="res://scenes/entities/drone.gd" id="1_n87ok"]
+[ext_resource type="Shader" uid="uid://75ffqwjbv6pn" path="res://scenes/shaders/drone.tres" id="2_6vf5s"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_xcp44"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_0tq5o"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_in55t"]
+
+[sub_resource type="Shader" id="Shader_in55t"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vf5s"]
+shader = SubResource("Shader_in55t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_in55t"]
+shader = ExtResource("2_6vf5s")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/Progress = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vf5s"]
+atlas = ExtResource("1_gs6nb")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in55t"]
+atlas = ExtResource("1_gs6nb")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvif6"]
+atlas = ExtResource("1_gs6nb")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0gm0"]
+atlas = ExtResource("1_gs6nb")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3v6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vf5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in55t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvif6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0gm0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_n87ok"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Drone:frame")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,6 +94,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
 
 [sub_resource type="Animation" id="Animation_0tq5o"]
 resource_name = "explode"
@@ -46,6 +122,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"chain_reaction"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xcp44"]
 resource_name = "idle"
@@ -54,7 +144,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Drone:frame")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,11 +154,28 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_6vf5s"]
+resource_name = "red light"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0tq5o"]
 _data = {
 &"RESET": SubResource("Animation_n87ok"),
 &"explode": SubResource("Animation_0tq5o"),
-&"idle": SubResource("Animation_xcp44")
+&"idle": SubResource("Animation_xcp44"),
+&"red light": SubResource("Animation_6vf5s")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3v6u"]
@@ -77,25 +184,32 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkxu0"]
 radius = 76.29548
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8ynv"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfy1w"]
 radius = 12.0
 
 [node name="Drone" type="CharacterBody2D" unique_id=433135790 groups=["drones"]]
+material = SubResource("ShaderMaterial_6vf5s")
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_n87ok")
 
-[node name="Drone" type="Sprite2D" parent="." unique_id=2070607920]
-texture = ExtResource("1_gs6nb")
-hframes = 4
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=140635324]
+material = SubResource("ShaderMaterial_in55t")
+sprite_frames = SubResource("SpriteFrames_j3v6u")
+autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=466595588]
 libraries/ = SubResource("AnimationLibrary_0tq5o")
+autoplay = &"red light"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=299615037]
+visible = false
 shape = SubResource("CircleShape2D_j3v6u")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1238985807]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -104,16 +218,29 @@ shape = SubResource("CircleShape2D_kkxu0")
 
 [node name="ExplosionSprite" type="Sprite2D" parent="." unique_id=473931804]
 visible = false
+material = SubResource("ShaderMaterial_i8ynv")
 texture = ExtResource("3_xcp44")
 hframes = 8
 
 [node name="CollsionArea" type="Area2D" parent="." unique_id=337605110]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollsionArea" unique_id=1944806245]
 light_mask = 0
 shape = SubResource("CircleShape2D_lfy1w")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1957847898]
+position = Vector2(-2, 2)
+scale = Vector2(0.09, 0.08)
+color = Color(1, 0, 0, 1)
+energy = 5.0
+texture = ExtResource("4_0tq5o")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1976708054]
+stream = ExtResource("6_in55t")
+volume_db = -20.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
