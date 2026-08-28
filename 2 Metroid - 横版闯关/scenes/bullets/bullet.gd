@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction : Vector2                                # 创建向量
-var speed = 100
+var speed = 200
 
 func _ready() -> void:                                 # 子弹发射贴动画
 	var tween = get_tree().create_tween()

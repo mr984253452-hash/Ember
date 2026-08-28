@@ -3715,6 +3715,12 @@ gravity = 1000
 [node name="Drone" parent="Entities" unique_id=433135790 instance=ExtResource("5_31hox")]
 position = Vector2(405, 116)
 
+[node name="Drone2" parent="Entities" unique_id=1093469045 instance=ExtResource("5_31hox")]
+position = Vector2(390, 104)
+
+[node name="Drone3" parent="Entities" unique_id=1910523217 instance=ExtResource("5_31hox")]
+position = Vector2(444, 108)
+
 [node name="bullets" type="Node2D" parent="." unique_id=304057092]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=938335066]
