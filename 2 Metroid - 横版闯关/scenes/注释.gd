@@ -195,7 +195,6 @@ extends Node2D
 
 # 判断连锁爆炸
 # var is_{变量名}: bool = false        # 设定初始状态
-# if not is_{变量名}:                  # 判断是否达成模版,达成后执行
 # is_{变量名} = true                   # 达成目标
 
 # 灯光
