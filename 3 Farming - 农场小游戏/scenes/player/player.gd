@@ -27,11 +27,12 @@ func _physics_process(_delta: float) -> void:
 
 func get_input():                                                               # 键盘映射
 	direction = Input.get_vector("left","right","up","down")                    # 接收wasd
+	
 	if Input.is_action_just_pressed("action"):
 		tool_state_machine.travel(tool_connection[current_tool])                                    # 判断空格 使用工具
 		$AnimationTree.set('parameters/OneShot/request',AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE) # AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE 命令单次动画节点执行一次播放 
 		can_move = false
-		if current_tool in [Tools.HOE,Tools.AXE,Tools.WATER]:
+		if current_tool in [Tools.HOE,Tools.WATER]:
 			await $AnimationTree.animation_finished                                                 # 播放完动画再生成地块
 			tool_use.emit(current_tool,position + direction * 14 + Vector2(0,4) )                   # 锄地偏移
 	

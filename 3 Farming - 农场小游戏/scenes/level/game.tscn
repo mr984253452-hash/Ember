@@ -885,22 +885,4 @@ y_sort_enabled = true
 [node name="Tree" parent="Objects" unique_id=1043987252 instance=ExtResource("5_qrcxb")]
 position = Vector2(33, -69)
 
-[node name="Tree2" parent="Objects" unique_id=140412034 instance=ExtResource("5_qrcxb")]
-position = Vector2(-76, -83)
-
-[node name="Tree3" parent="Objects" unique_id=867969286 instance=ExtResource("5_qrcxb")]
-position = Vector2(-71, -25)
-
-[node name="Tree4" parent="Objects" unique_id=610212199 instance=ExtResource("5_qrcxb")]
-position = Vector2(-9, -47)
-
-[node name="Tree5" parent="Objects" unique_id=1752781053 instance=ExtResource("5_qrcxb")]
-position = Vector2(-133, -42)
-
-[node name="Tree6" parent="Objects" unique_id=203093333 instance=ExtResource("5_qrcxb")]
-position = Vector2(38, 20)
-
-[node name="Tree7" parent="Objects" unique_id=864946051 instance=ExtResource("5_qrcxb")]
-position = Vector2(-103, 27)
-
 [connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkxu0"]
 size = Vector2(20, 6)
 
-[node name="Tree" type="StaticBody2D" unique_id=1043987252 groups=["trees"]]
+[node name="Tree" type="StaticBody2D" unique_id=1043987252 groups=["Trees"]]
 script = ExtResource("1_gk3pd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=176606565]
