@@ -28,10 +28,9 @@ func hit():                             # 命中生命计算
 	if health <= 0:
 		is_exploding = true
 		explode()
-	$AnimatedSprite2D.set("material/shader_parameter/Progress",0.0)
-	#var tween = get_tree().create_tween()                                       # 受击补间动画
-	#tween.tween_property($AnimatedSprite2D.material,'shader_parameter/Progress',0.0,0.2)
-	#tween.tween_property($AnimatedSprite2D.material,'shader_parameter/Progress',1.0,0.5)
+	var tween = get_tree().create_tween()                                       # 受击补间动画
+	tween.tween_property($AnimatedSprite2D.material,'shader_parameter/Progress',0.0,0.2)
+	tween.tween_property($AnimatedSprite2D.material,'shader_parameter/Progress',1.0,0.5)
 	
 func explode():                         # 爆炸动画
 	speed = 0                                                                       # 碰到玩家停止移动

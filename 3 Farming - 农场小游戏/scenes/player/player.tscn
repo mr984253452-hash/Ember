@@ -713,6 +713,18 @@ animation = &"idle_left"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0owmy"]
 animation = &"idle_right"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qek5x"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5gtgg"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h17s1"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_je7p5"]
+animation = &"idle_left"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qek5x"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_lvxji")
 blend_point_0/pos = Vector2(0, 1)
@@ -726,6 +738,18 @@ blend_point_2/name = &"idle_left"
 blend_point_3/node = SubResource("AnimationNodeAnimation_0owmy")
 blend_point_3/pos = Vector2(1, 0)
 blend_point_3/name = &"idle_right"
+blend_point_4/node = SubResource("AnimationNodeAnimation_qek5x")
+blend_point_4/pos = Vector2(1, 1)
+blend_point_4/name = &"idle_right 2"
+blend_point_5/node = SubResource("AnimationNodeAnimation_5gtgg")
+blend_point_5/pos = Vector2(1, -1)
+blend_point_5/name = &"idle_right 3"
+blend_point_6/node = SubResource("AnimationNodeAnimation_h17s1")
+blend_point_6/pos = Vector2(-1, -1)
+blend_point_6/name = &"idle_left 2"
+blend_point_7/node = SubResource("AnimationNodeAnimation_je7p5")
+blend_point_7/pos = Vector2(-1, 1)
+blend_point_7/name = &"idle_left 3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dovo2"]
 advance_mode = 2
