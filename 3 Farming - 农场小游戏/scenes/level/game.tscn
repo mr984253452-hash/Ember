@@ -883,6 +883,27 @@ y_sort_enabled = true
 [node name="Player" parent="Objects" unique_id=1375447170 groups=["trees"] instance=ExtResource("1_e6yxx")]
 
 [node name="Tree" parent="Objects" unique_id=1043987252 instance=ExtResource("5_qrcxb")]
-position = Vector2(33, -69)
 
+[node name="Tree2" parent="Objects" unique_id=668361044 instance=ExtResource("5_qrcxb")]
+position = Vector2(-89, 53)
+
+[node name="Tree3" parent="Objects" unique_id=1597799409 instance=ExtResource("5_qrcxb")]
+position = Vector2(119, 38)
+
+[node name="Tree4" parent="Objects" unique_id=1127102679 instance=ExtResource("5_qrcxb")]
+position = Vector2(-40, -70)
+
+[node name="Tree5" parent="Objects" unique_id=904683460 instance=ExtResource("5_qrcxb")]
+position = Vector2(-167, -37)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=905856251]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=694331164]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="seed_use" from="Objects/Player" to="." method="_on_player_seed_use"]
 [connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]

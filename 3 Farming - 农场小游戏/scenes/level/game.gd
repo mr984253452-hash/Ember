@@ -1,7 +1,11 @@
 extends Node2D
 
 @onready var player = $Objects/Player
+var plant_scene:PackedScene = preload("res://scenes/level/plant.tscn")
 
+func _process(_delta: float) -> void:                                  # tab切换天数
+	if Input.is_action_just_pressed('ui_focus_next'):
+		day_switch()
 
 func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 	var grid_pos = Vector2i(int(pos.x/16),int(pos.y/16))
@@ -15,4 +19,24 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 	if tool == player.Tools.AXE: 
 		for tree in get_tree().get_nodes_in_group('Trees') :
 			if tree.position.distance_to(pos) < 10:
-				print(tree)
+				tree.hit()
+
+func _on_player_seed_use(seed_enum: int, pos: Vector2) -> void:                      # 播种逻辑
+	var grid_pos = Vector2i(int(pos.x/16),int(pos.y/16))
+	if $Layers/SoilLayer.get_cell_tile_data(grid_pos) as TileData:
+		var plant_pos = Vector2(grid_pos.x * 16 + 8,grid_pos.y * 16 - 4)
+		var plant = plant_scene.instantiate() as StaticBody2D
+		plant.setup(seed_enum,grid_pos)
+		$Objects.add_child(plant)
+		plant.position = plant_pos
+
+func day_switch():
+	var tween = create_tween()
+	tween.tween_property($CanvasLayer/ColorRect,'modulate:a',1.0,1.0)  # modulate:a   a为透明度通道 r为红色通道
+	tween.tween_interval(1.0)
+	tween.tween_callback(level_reset)
+	tween.tween_property($CanvasLayer/ColorRect,'modulate:a',0.0,1.0)
+
+func level_reset():                                                   # 昼夜切换生长
+	for plant in get_tree().get_nodes_in_group('Plants'):
+		plant.grow()

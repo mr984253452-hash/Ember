@@ -133,7 +133,7 @@ extends Node2D
 # 两种颜色做混合 调节占比 mix3维
 # 面板浮点数 FloatParameter
 
-# 函数修改面板参数
+# 函数修改面板着色器参数
 # 图片{节点名}.根路径.set_{第二个折叠路径}('{参数名}',{修改数值})
 # 补间函数 tween.tween_property({节点名}.根路径,'{第二个折叠路径}/{参数名}',{修改数值},{持续时间})
 
@@ -267,3 +267,24 @@ extends Node2D
 # {瓦片节点路径}.set_cells_terrain_connect([{网格坐标}],{Terrain_Sets里的第几个},{Terrains里的第几个})
 # 随机取地块
 # ${瓦片节点路径}.set_cell(网格坐标,图编号,Vector2i(randi_range(范围),0))
+#
+# 着色器闪烁动画fragment()  面板Material.shader.Shader fragment()
+#uniform float progress : hint_range(0.0,1.0);          # 浮点变量 0~1 之间
+#void fragment() {                                      # 修改输出颜色 混合颜色
+#	COLOR.rgb = mix(COLOR.rgb,vec3(1.0),progress); 
+#}
+# 修复共享着色器 Material.Resource_local_to_scene 开启
+# 
+# 自定义停止时长
+# await get_tree().create_timer({时长}).timeout
+
+# 字典索引
+# 新建变量名 = 字典名[索引]['[值]']
+
+# 纯色矩形函数修改
+# modulate:a                                                 # a为透明度通道 r为红色通道
+# 转变为黑色 面板Visibility.Modulate 透明度设为0
+
+# 补间动画进阶
+# 暂停时长 tween.tween_interval({时长})
+# 使用函数 tween.tween_callback({使用函数})
