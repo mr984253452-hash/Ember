@@ -131,6 +131,8 @@ states/move/position = Vector2(394, 118.333)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kmyvj"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_a2luo"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_eir2k")]
 graph_offset = Vector2(-374, -175)
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_g5osr"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p582l"]
 animation = &"axe_left"
 
@@ -279,11 +281,15 @@ transitions = ["Start", "hoe", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(-418, -215)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5spe6"]
-nodes/output/position = Vector2(656, 192)
+graph_offset = Vector2(9.429402, 3.5272217)
+nodes/output/position = Vector2(1013.3333, 200)
 nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_inhyd")
 nodes/MoveStateMachine/position = Vector2(336, 48)
 nodes/ToolStateMachine/node = SubResource("AnimationNodeStateMachine_vwwfy")
-nodes/ToolStateMachine/position = Vector2(336, 240)
+nodes/ToolStateMachine/position = Vector2(386.66666, 346.66666)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_g5osr")
+nodes/OneShot/position = Vector2(720, 213.33333)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"MoveStateMachine", &"OneShot", 1, &"ToolStateMachine"]
 
 [sub_resource type="GDScript" id="GDScript_dve68"]
 script/source = "extends AnimationTree
@@ -378,4 +384,7 @@ parameters/MoveStateMachine/move/blend_position = Vector2(0, 0)
 parameters/ToolStateMachine/axe/blend_position = Vector2(-0.368759, 0.645492)
 parameters/ToolStateMachine/hoe/blend_position = Vector2(-0.00261289, -0.988525)
 parameters/ToolStateMachine/water/blend_position = Vector2(0, 0)
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 script = SubResource("GDScript_dve68")

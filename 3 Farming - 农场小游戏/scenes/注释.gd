@@ -217,5 +217,39 @@ extends Node2D
 # 方向动画   状态机界面右键 添加BlendSpace2D 需要点击小铅笔进入方向动画界面 添加移动点 和游戏里的y轴相反
 # 进入控制动画面板 需需双击控制动画节点
 
+# 切换待机动画 Start -> idle  <- 不带自动播放互联->  move 
+# @onready var move_state_machine:AnimationNodeStateMachinePlayback = ${控制动画节点名}.get('parameters/MoveStateMachine/playback')
+# {创建的路径节点名}.travel('{状态名称}')
+
 # 函数修改控制动画
 # ${节点名}.set("{路径}",{修改数值})
+
+# 枚举
+# 建立枚举 enum Tools {如 HOE,AXE,WATER}                                          # 用于建立如多项农具,来减少输入格式字母错误
+# 设定枚举初始 var current_tool : Tools = 如 Tools.HOE                             # 用于相加切换
+# current_tool = posmod(current_tool + 1,Tools.size()) as Tools                 # posmod()正向取模函数,内部需要输入最小值和最大值 Tools.size()来计算内部有几个元素,用来取最大值
+#	if Input.is_action_just_pressed("tool_forward"):
+#		current_tool = posmod(current_tool + 1,Tools.size()) as Tools
+#	if Input.is_action_just_pressed("tool_backward"):
+#		current_tool = posmod(current_tool - 1,Tools.size()) as Tools
+# 缩减代码
+#	if Input.is_action_just_pressed("tool_forward") or Input.is_action_just_pressed("tool_backward") :
+#		var tool_direction = Input.get_axis("tool_backward","tool_forward") as int
+#		current_tool = posmod(current_tool + tool_direction,Tools.size()) as Tools
+
+# 从字典里遍历出值并循环出所有 state 的拼接语句,减少代码行数
+# for state in {需遍历字典}.values():
+
+# 工具使用时不能动                                   # 非循环动画结束时
+# 控制动画信号 animation_finished
+# {建立布尔变量} := true
+#	if {建立布尔变量}:
+#		{键盘映射函数}
+#	velocity = direction * speed * int({建立布尔变量}) 
+# 播放动画时 can_move = false
+# 动画结束信号 {建立布尔变量} := tru
+
+# 自动铺瓦
+# 瓦片集匹配模式 面板 terrain_set_0.mode.Match Corners Sides
+# 建立拼接显示 面板 terrain_set_0.terrain_0.添加元素
+# 设定拼接贴图 下面板 TileSet 绘制 地形 选择拼接显示 选择颜色,最后选择贴图上所有可拼接方格
