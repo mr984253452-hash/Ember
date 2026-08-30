@@ -250,6 +250,13 @@ extends Node2D
 # 动画结束信号 {建立布尔变量} := tru
 
 # 自动铺瓦
-# 瓦片集匹配模式 面板 terrain_set_0.mode.Match Corners Sides
+# 瓦片集匹配模式 面板 terrain_set_0.mode 添加元素 Match Corners Sides
 # 建立拼接显示 面板 terrain_set_0.terrain_0.添加元素
 # 设定拼接贴图 下面板 TileSet 绘制 地形 选择拼接显示 选择颜色,最后选择贴图上所有可拼接方格
+# 设定后铺瓦 TileMap 地形 地图集中选择贴图
+# 设定变体瓦片 设定拼接贴图完在绘制标签概率
+# 建立瓦片动画 不自动创建图块 选择一张贴图 选择标签 动画里修改列数 Frames添加帧数 TileMap 图块选择第一种瓦片
+# 碰撞Physicn Layers  添加元素 选择图层 TileSet 绘制 物理层0
+
+# 给创建的信号赋值
+# {变量名}.emit({值}) 

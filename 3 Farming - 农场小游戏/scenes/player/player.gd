@@ -7,6 +7,8 @@ var direction: Vector2
 var speed := 100
 var can_move := true                                                           # 设定工具使用时不能移动
 
+signal tool_use(tool : Tools, pos : Vector2)
+
 enum Tools {HOE,AXE,WATER}                                                      # 建立枚举
 var current_tool :Tools = Tools.HOE                                             # 设定枚举初始
 const tool_connection = {
@@ -28,7 +30,8 @@ func get_input():                                                               
 		tool_state_machine.travel(tool_connection[current_tool])                                        # 判断空格 使用工具
 		$AnimationTree.set('parameters/OneShot/request',AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE) # AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE 命令单次动画节点执行一次播放
 		can_move = false
-		
+		tool_use.emit(current_tool,position)
+	
 	if Input.is_action_just_pressed("tool_forward") or Input.is_action_just_pressed("tool_backward") :  # 判断q和e输入
 		var tool_direction = Input.get_axis("tool_backward","tool_forward") as int                  # 用于相加切换
 		current_tool = posmod(current_tool + tool_direction,Tools.size()) as Tools                  # posmod()正向取模函数,内部需要输入最小值和最大值 Tools.size()来计算内部有几个元素,用来取最大值
