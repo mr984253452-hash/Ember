@@ -260,6 +260,9 @@ extends Node2D
 # 碰撞Physicn Layers  添加元素 选择图层 TileSet 绘制 物理层0
 # 瓦片做限制 面板 Custom Data Layers Type为bool 面板下 TileSet 绘制自定义数据 启用
 
+# 分组判断 物品是否在某种格子内 
+# ${瓦片集节点}.get_used_cells()
+
 # 给创建的信号赋值
 # {变量名}.emit({值}) 
 
@@ -288,3 +291,8 @@ extends Node2D
 # 补间动画进阶
 # 暂停时长 tween.tween_interval({时长})
 # 使用函数 tween.tween_callback({使用函数})
+
+# 作物生长
+# 	if watered:
+#		age += min(age + grow_speed,max_age)  # grow_speed 为生长速度,max_age为最大生长时长
+#		$[作物贴图].frame = int(age)

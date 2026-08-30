@@ -16,7 +16,7 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 	if tool == player.Tools.WATER: 
 		if $Layers/SoilLayer.get_cell_tile_data(grid_pos) :                     # 判断是否为以开垦
 			$Layers/SoilwaterLayer.set_cell(grid_pos,0,Vector2i(randi_range(0,2),0))  # 网格坐标,图编号,随机取值	
-	if tool == player.Tools.AXE: 
+	if tool == player.Tools.AXE:                                                # 斧头逻辑
 		for tree in get_tree().get_nodes_in_group('Trees') :
 			if tree.position.distance_to(pos) < 10:
 				tree.hit()
@@ -39,4 +39,5 @@ func day_switch():
 
 func level_reset():                                                   # 昼夜切换生长
 	for plant in get_tree().get_nodes_in_group('Plants'):
-		plant.grow()
+		plant.grow(plant.grid_pos in $Layers/SoilwaterLayer.get_used_cells())
+	$Layers/SoilwaterLayer.clear()

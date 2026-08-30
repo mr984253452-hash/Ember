@@ -6,6 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v6u"]
 size = Vector2(6, 10)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfy1w"]
+radius = 7.0
+height = 27.0
+
 [node name="Plant" type="StaticBody2D" unique_id=589417764 groups=["Plants"]]
 script = ExtResource("1_x6yfg")
 
@@ -16,3 +20,14 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1461085557]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_j3v6u")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=764979875]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1850872434]
+position = Vector2(0, 1.5)
+shape = SubResource("CapsuleShape2D_lfy1w")
+
+[connection signal="mouse_entered" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_entered"]
