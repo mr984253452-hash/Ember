@@ -265,3 +265,5 @@ extends Node2D
 
 # 游戏内按键转换地块
 # {瓦片节点路径}.set_cells_terrain_connect([{网格坐标}],{Terrain_Sets里的第几个},{Terrains里的第几个})
+# 随机取地块
+# ${瓦片节点路径}.set_cell(网格坐标,图编号,Vector2i(randi_range(范围),0))

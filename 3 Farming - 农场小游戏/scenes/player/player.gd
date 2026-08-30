@@ -31,9 +31,9 @@ func get_input():                                                               
 		tool_state_machine.travel(tool_connection[current_tool])                                    # 判断空格 使用工具
 		$AnimationTree.set('parameters/OneShot/request',AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE) # AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE 命令单次动画节点执行一次播放 
 		can_move = false
-		if current_tool == Tools.HOE:
+		if current_tool in [Tools.HOE,Tools.AXE,Tools.WATER]:
 			await $AnimationTree.animation_finished                                                 # 播放完动画再生成地块
-			tool_use.emit(current_tool,position + direction * 14 + Vector2(0,4) )                                      # 锄地偏移
+			tool_use.emit(current_tool,position + direction * 14 + Vector2(0,4) )                   # 锄地偏移
 	
 	if Input.is_action_just_pressed("tool_forward") or Input.is_action_just_pressed("tool_backward") :  # 判断q和e输入
 		var tool_direction = Input.get_axis("tool_backward","tool_forward") as int                  # 用于相加切换
@@ -54,3 +54,6 @@ func animation():                                                               
 
 func _on_animation_tree_animation_finished(_anim_name: StringName) -> void:     # 播放完动画可移动
 	can_move = true 
+
+func ace_use():
+	tool_use.emit(current_tool,position + direction * 14 + Vector2(0,4) )
