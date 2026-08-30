@@ -14,6 +14,7 @@ extends Node2D
 # var {变量名}_scene = preload("{文件路径}.tscn")
 
 # 位置方向
+# Vector2i                                                                      # 整数二维向量
 # var direction: Vector2 = Vector2                                              # 所有二维向量都要创建
 # var direction = Vector2.LEFT                                                  # 指定方向左侧,RIGHT右
 #	if position.x < 0:                                                          # 判断在画面左侧还是右侧
@@ -189,7 +190,7 @@ extends Node2D
 # position = {坐标} + {方向} * 10                   # 以玩家为中心 朝鼠标方向偏移 10
 # ${节点名}.show()                                  # 显示节点贴图
 # ${节点名}.hide()                                  # 隐藏节点贴图
-# await  ${动画名}.animation_finished               # 播放完动画
+# await ${动画名}.animation_finished               # 结束播放完动画
 # func _on_detection_area_body_entered({检测节点名}: {检测类型}) -> void: # 检测进入修改
 # if '{函数名} ' in body:                                # 判断 body 内部是否有指定函数名
 # body.{函数名}                                     # 连锁执行参数,触发函数内部的参数，可以是另一个文件的函数
@@ -257,6 +258,10 @@ extends Node2D
 # 设定变体瓦片 设定拼接贴图完在绘制标签概率
 # 建立瓦片动画 不自动创建图块 选择一张贴图 选择标签 动画里修改列数 Frames添加帧数 TileMap 图块选择第一种瓦片
 # 碰撞Physicn Layers  添加元素 选择图层 TileSet 绘制 物理层0
+# 瓦片做限制 面板 Custom Data Layers Type为bool 面板下 TileSet 绘制自定义数据 启用
 
 # 给创建的信号赋值
 # {变量名}.emit({值}) 
+
+# 游戏内按键转换地块
+# {瓦片节点路径}.set_cells_terrain_connect([{网格坐标}],{Terrain_Sets里的第几个},{Terrains里的第几个})
