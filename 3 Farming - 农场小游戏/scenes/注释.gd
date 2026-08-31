@@ -104,7 +104,8 @@ extends Node2D
 # 计时冷却
 # ${计时器节点名}.time_left == 0    # 作为判断
 # ${计时器节点名}.start()           # 作为开启
- 
+# ${计时器节点名}.stop()            # 作为停止
+
 # 创建动画
 # 行走动画1.4秒
 # 跳跃动画不自动
@@ -294,5 +295,15 @@ extends Node2D
 
 # 作物生长
 # 	if watered:
-#		age += min(age + grow_speed,max_age)  # grow_speed 为生长速度,max_age为最大生长时长
+#		age += min(grow_speed,max_age)  # grow_speed 为生长速度,max_age为最大生长时长
 #		$[作物贴图].frame = int(age)
+
+# 叠加调色滤镜,天黑
+# 需要配套计时器 开启 wait_time autostart
+# 创建 @export var datyime_gradient: Gradient
+# 根节点面板 datyime_gradient 
+# 新建 双击过渡标
+# 三个标e9d3c2  ffffff 3e5695
+# var daytime_point: float = 1.0 - ${计时器}.time_left /   ${计时器}.wait_tim
+# ${叠加调色滤镜节点}.color = datyime_gradient.sample(daytime_point)                        # 调色滤镜读取 datyime_gradient
+# 第二天重启计时器 ${计时器}.start()

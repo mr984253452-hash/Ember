@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 var grid_pos : Vector2i        # 作物种植坐标
-var age : float = 2
+var age : float
 var max_age: int              # 作物生长阶段
 var grow_speed: float         # 生长时间
 const plant_data = {          # 建立作物字典
@@ -18,10 +18,11 @@ func setup(seed_enum:Global.Seeds,grid_position: Vector2i):                     
 
 func grow(watered: bool):                                                       # 浇水生长
 	if watered:
-		age += min(age + grow_speed,max_age)
+		age = min(age + grow_speed,max_age)                                     # 生长累加,并判断生长最大值
 		$Sprite2D.frame = int(age)
 
 
-func _on_static_body_2d_mouse_entered() -> void:  # 作物成熟后 碰触采摘
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:                           # 判断收获
 	if age >= max_age:
 		queue_free()

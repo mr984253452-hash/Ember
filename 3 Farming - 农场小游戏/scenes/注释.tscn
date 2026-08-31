@@ -281,7 +281,7 @@ transitions = ["Start", "hoe", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(-418, -215)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5spe6"]
-graph_offset = Vector2(9.429402, 3.5272217)
+graph_offset = Vector2(-500.28354, 3.5272217)
 nodes/output/position = Vector2(1013.3333, 200)
 nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_inhyd")
 nodes/MoveStateMachine/position = Vector2(336, 48)
@@ -388,3 +388,5 @@ parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
 script = SubResource("GDScript_dve68")
+
+[node name="叠加调色滤镜" type="CanvasModulate" parent="." unique_id=1666085677]

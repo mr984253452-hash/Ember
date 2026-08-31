@@ -16,12 +16,10 @@ size = Vector2(20, 6)
 script = ExtResource("1_gk3pd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=176606565]
-visible = false
 material = SubResource("ShaderMaterial_hdvfj")
 texture = ExtResource("1_eqwtg")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1739025717]
-visible = false
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_kkxu0")

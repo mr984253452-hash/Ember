@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bp86h355tqupf" path="res://scenes/player/player.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://dpfxibevth7y" path="res://graphics/characters/player_animations.png" id="2_yewv4"]
+[ext_resource type="AudioStream" uid="uid://dtsnwvwr5w013" path="res://audio/axe.wav" id="3_lvxji"]
+[ext_resource type="AudioStream" uid="uid://bxbb5os8ycr5w" path="res://audio/hoe.wav" id="4_p47bc"]
+[ext_resource type="AudioStream" uid="uid://dff6xghytlqqh" path="res://audio/step.mp3" id="5_75vfm"]
+[ext_resource type="AudioStream" uid="uid://b1sbhvfoqd0u1" path="res://audio/water.ogg" id="6_0owmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk3pd"]
 size = Vector2(10, 16)
@@ -1031,7 +1035,7 @@ transitions = ["hoe", "water", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(0, -97.816124)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6eyoc"]
-graph_offset = Vector2(-58.678387, 233.37871)
+graph_offset = Vector2(-256.33295, 24.640787)
 nodes/output/position = Vector2(973.3333, 120)
 nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_75vfm")
 nodes/MoveStateMachine/position = Vector2(373.33334, 40)
@@ -1072,4 +1076,26 @@ parameters/OneShot/request = 0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1486589141]
 
+[node name="Sounds" type="Node" parent="." unique_id=1915517073]
+
+[node name="AxeSound" type="AudioStreamPlayer" parent="Sounds" unique_id=1830635798]
+stream = ExtResource("3_lvxji")
+volume_db = -10.0
+
+[node name="HoeSound" type="AudioStreamPlayer" parent="Sounds" unique_id=1025178561]
+stream = ExtResource("4_p47bc")
+volume_db = -10.0
+
+[node name="StepSound" type="AudioStreamPlayer" parent="Sounds" unique_id=97722046]
+stream = ExtResource("5_75vfm")
+volume_db = -10.0
+
+[node name="WaterSound" type="AudioStreamPlayer" parent="Sounds" unique_id=490545183]
+stream = ExtResource("6_0owmy")
+volume_db = -10.0
+
+[node name="WalkSoundTimer" type="Timer" parent="Sounds" unique_id=877150020]
+wait_time = 0.5
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="timeout" from="Sounds/WalkSoundTimer" to="." method="_on_walk_sound_timer_timeout"]

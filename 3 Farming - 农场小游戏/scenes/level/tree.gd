@@ -2,7 +2,7 @@ extends StaticBody2D
 
 
 func _ready() -> void:
-	$Sprite2D.frame = [0,1].pick_random()
+	$Sprite2D.frame = [0,1].pick_random()                                        # 两帧随机生成
 
 func hit():
 	var tween = create_tween()                                                   # 受击补间动画
