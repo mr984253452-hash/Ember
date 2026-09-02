@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://di731vhobyfs6"]
 
+[ext_resource type="Script" uid="uid://bi5hbkv5u7m10" path="res://scenes/input_menu.gd" id="1_y2k4r"]
+
 [node name="InputMenu" type="Control" unique_id=1834602644]
 layout_mode = 3
 anchors_preset = 15
@@ -9,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_y2k4r")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1380019646]
 layout_mode = 1
@@ -24,23 +27,3 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
-
-[node name="ColorRect" type="ColorRect" parent="GridContainer" unique_id=2038425292]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ColorRect2" type="ColorRect" parent="GridContainer" unique_id=2134835712]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ColorRect3" type="ColorRect" parent="GridContainer" unique_id=577375633]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ColorRect4" type="ColorRect" parent="GridContainer" unique_id=1659758861]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3

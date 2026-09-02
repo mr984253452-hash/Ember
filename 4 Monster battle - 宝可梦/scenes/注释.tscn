@@ -394,3 +394,23 @@ script = SubResource("GDScript_dve68")
 [node name="布局容器" type="GridContainer" parent="." unique_id=1777729169]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="配合布局按钮" type="ColorRect" parent="布局容器" unique_id=926704137]
+layout_mode = 2
+
+[node name="IU文本" type="Label" parent="." unique_id=1324606307]
+offset_right = 43.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Atrox"
+horizontal_alignment = 1
+
+[node name="IU进度条" type="ProgressBar" parent="." unique_id=1431652595]
+offset_right = 4.0
+offset_bottom = 27.0
+value = 100.0
+
+[node name="按钮" type="Button" parent="." unique_id=690146303]
+size_flags_horizontal = 3
+size_flags_vertical = 3

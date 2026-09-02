@@ -314,3 +314,11 @@ extends Node2D
 
 # ui精灵帧
 # Texture.AtlasTextue.拖入精灵帧到 Atlas.在 region w和h 里填入单张帧的像素大小
+
+# IU按钮
+# 绑定信号 pressed 建立函数
+# 鼠标穿透 选择按钮节点 面板Mouse.mouse_filter.Ignore
+# 向节点内添加新节点 ${根节点}.add_child({添加的子节点})
+
+# ！！！！！！！给另一个文件传参数，？预加载,初始化参数
+# setup()

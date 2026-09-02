@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cvyuyftloyfpo"]
+
+[ext_resource type="Script" uid="uid://bhao7wpj0ja5x" path="res://scenes/grib_button.gd" id="1_w814f"]
+
+[node name="GribButton" type="Button" unique_id=2000738613]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+script = ExtResource("1_w814f")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
