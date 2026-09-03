@@ -7,8 +7,6 @@ size = Vector2(10, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g5osr"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_etf7s"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g5osr"]
 animation = &"idle_down"
 
@@ -307,35 +305,44 @@ func _physics_process(delta: float) -> void:
 script = ExtResource("1_vbua4")
 
 [node name="静态贴图" type="Sprite2D" parent="." unique_id=1808266401]
+visible = false
 
 [node name="相机" type="Camera2D" parent="." unique_id=45276996]
+visible = false
 limit_enabled = false
 
 [node name="静态碰撞" type="StaticBody2D" parent="." unique_id=1235268145]
+visible = false
 
 [node name="碰撞形状" type="CollisionShape2D" parent="静态碰撞" unique_id=233168421]
 visible = false
 shape = SubResource("RectangleShape2D_vka04")
 
 [node name="动态碰撞" type="CharacterBody2D" parent="." unique_id=393885049]
+visible = false
 
 [node name="碰撞形状" type="CollisionShape2D" parent="动态碰撞" unique_id=1345077978]
 visible = false
 shape = SubResource("RectangleShape2D_vka04")
 
 [node name="创建动画切换精灵帧" type="AnimatedSprite2D" parent="." unique_id=33565335]
+visible = false
 sprite_frames = SubResource("SpriteFrames_g5osr")
 
 [node name="计时器" type="Timer" parent="." unique_id=1531067938]
 
 [node name="检测进入" type="Area2D" parent="." unique_id=1657077634]
+visible = false
 
 [node name="绘制检测区域" type="CollisionPolygon2D" parent="检测进入" unique_id=491798058]
+visible = false
 polygon = PackedVector2Array(-194, -317, 193, -318, 192, -132, -192, -131)
 
 [node name="检测物体进入或离开屏幕" type="VisibleOnScreenEnabler2D" parent="." unique_id=2042707072]
+visible = false
 
 [node name="多个坐标摆放器" type="Marker2D" parent="." unique_id=100915783]
+visible = false
 
 [node name="用户界面创建" type="Control" parent="." unique_id=1418365331]
 visible = false
@@ -345,36 +352,44 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="纯色矩形背景板" type="ColorRect" parent="." unique_id=917967728]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="字体" type="Label" parent="." unique_id=997623162]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="界面展示图片" type="TextureRect" parent="." unique_id=1363245373]
+visible = false
 offset_left = 629.0
 offset_top = 321.0
 offset_right = 669.0
 offset_bottom = 361.0
 
 [node name="画布层用于主场景固定文字位置" type="CanvasLayer" parent="." unique_id=1312146134]
+visible = false
 
 [node name="声音播放" type="AudioStreamPlayer" parent="." unique_id=11872794]
 
 [node name="2D声音播放 远了会变小" type="AudioStreamPlayer2D" parent="." unique_id=2116383648]
+visible = false
 
 [node name="创建动画" type="AnimationPlayer" parent="." unique_id=1923734347]
 
 [node name="瓦片图层" type="TileMapLayer" parent="." unique_id=1374498778]
+visible = false
 
 [node name="太阳光" type="DirectionalLight2D" parent="." unique_id=964051168]
+visible = false
 
 [node name="太阳光阴影" type="LightOccluder2D" parent="." unique_id=742199193]
+visible = false
 position = Vector2(-108, 7)
-occluder = SubResource("OccluderPolygon2D_etf7s")
 
 [node name="灯泡" type="PointLight2D" parent="." unique_id=1285548483]
+visible = false
 
 [node name="控制动画" type="AnimationTree" parent="." unique_id=1638439071]
 tree_root = SubResource("AnimationNodeBlendTree_5spe6")
@@ -390,15 +405,19 @@ parameters/OneShot/request = 0
 script = SubResource("GDScript_dve68")
 
 [node name="叠加调色滤镜" type="CanvasModulate" parent="." unique_id=1666085677]
+visible = false
 
-[node name="布局容器" type="GridContainer" parent="." unique_id=1777729169]
+[node name="网格容器" type="GridContainer" parent="." unique_id=1777729169]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="配合布局按钮" type="ColorRect" parent="布局容器" unique_id=926704137]
+[node name="配合布局按钮" type="ColorRect" parent="网格容器" unique_id=926704137]
+visible = false
 layout_mode = 2
 
 [node name="IU文本" type="Label" parent="." unique_id=1324606307]
+visible = false
 offset_right = 43.0
 offset_bottom = 23.0
 size_flags_horizontal = 3
@@ -407,10 +426,24 @@ text = "Atrox"
 horizontal_alignment = 1
 
 [node name="IU进度条" type="ProgressBar" parent="." unique_id=1431652595]
+visible = false
 offset_right = 4.0
 offset_bottom = 27.0
 value = 100.0
 
 [node name="按钮" type="Button" parent="." unique_id=690146303]
+visible = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="滚动容器" type="ScrollContainer" parent="." unique_id=298333080]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="配合滚动容器" type="VBoxContainer" parent="滚动容器" unique_id=1340960917]
+visible = false
+layout_mode = 2
+
+[node name="配合配合滚动容器" type="ColorRect" parent="滚动容器/配合滚动容器" unique_id=1722505417]
+layout_mode = 2

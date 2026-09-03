@@ -27,3 +27,17 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1723396840]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=2144750367]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

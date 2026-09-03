@@ -6,6 +6,9 @@ extends Node2D
 # 1280x720
 # 速度 speed
 
+# Dictionary 字典
+# Array 数组
+
 
 ################################################
 
@@ -322,3 +325,12 @@ extends Node2D
 
 # ！！！！！！！给另一个文件传参数，？预加载,初始化参数
 # setup()
+
+# 节点附参数
+# 文本 .txet
+# 图片  .texture
+
+# if判断 
+# match {判断==}:
+
+# 任何按键都会触发的函数 func _input(event: InputEvent) -> void:
