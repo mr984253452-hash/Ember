@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c7rju0tptcr0k"]
 
+[ext_resource type="Script" uid="uid://dtl1irbncgjhm" path="res://scenes/monster_stats.gd" id="1_ch8vr"]
+
 [node name="MonsterStats" type="Control" unique_id=1413959599]
 custom_minimum_size = Vector2(80, 40)
 layout_mode = 3
@@ -8,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ch8vr")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=989114654]
 custom_minimum_size = Vector2(80, 40)

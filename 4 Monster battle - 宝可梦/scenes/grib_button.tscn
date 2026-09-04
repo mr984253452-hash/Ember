@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bhao7wpj0ja5x" path="res://scenes/grib_button.gd" id="1_w814f"]
 
 [node name="GribButton" type="Button" unique_id=2000738613]
+visible = false
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 3

@@ -310,6 +310,7 @@ extends Node2D
 # var daytime_point: float = 1.0 - ${计时器}.time_left /   ${计时器}.wait_tim
 # ${叠加调色滤镜节点}.color = datyime_gradient.sample(daytime_point)                        # 调色滤镜读取 datyime_gradient
 # 第二天重启计时器 ${计时器}.start()
+# tab = ui_focus_next
 
 #####################################
 
@@ -328,9 +329,41 @@ extends Node2D
 
 # 节点附参数
 # 文本 .txet
-# 图片  .texture
+# 图片  .texture            load()
 
 # if判断 
 # match {判断==}:
 
 # 任何按键都会触发的函数 func _input(event: InputEvent) -> void:
+
+# 键盘按键名称
+# esc = ui_cancel
+
+# 键盘交点
+# await get_tree().process_frame
+# ${节点名}.get_child(0).grab_focus()
+# 滚动条交点开启 面板 follow_focus 
+
+# 忽略警告
+# @warning_ignore
+
+# 补间隐藏
+# tween.tween_property($AttackSprite,'visible',false,0)
+
+# 函数
+# .pop_at()  去除值并剔除
+# .append()  添加回去
+# .erase()   删除
+
+# 用界面展示图片做初始帧
+# var new_atlas: AtlasTexture = AtlasTexture.new()
+# new_atlas.atlas = load(Global.monster_data[Global.current_enemy]['front texture'])
+# new_atlas.region = Rect2i(Vector2i.ZERO,Vector2i(96,96))
+# $Monsters/Enemy.texture = new_atlas
+
+# 用界面展示图片做动画
+# @export var animation_index: int = 0  # 建立动画播放帧
+#func _process(delta: float) -> void:                                                     # 精灵帧播放函数
+#	var atlas = $Monsters/Enemy.texture as AtlasTexture                                  # 读取纹理传入位置
+#	atlas.region = Rect2i(Vector2(96 * animation_index,0),Vector2i(96,96))               # 位置xy,尺寸xy
+# 建立动画轨道 插入帧选择帧号
