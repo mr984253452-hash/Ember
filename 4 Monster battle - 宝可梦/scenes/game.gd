@@ -14,7 +14,7 @@ func _ready() -> void:                                                          
 	new_atlas.region = Rect2i(Vector2i.ZERO,Vector2i(96,96))                             # 分割初始帧
 	$Monsters/Enemy.texture = new_atlas                                                  # 传入纹理
 	
-	$A.hide()
+	$AttackSprite.hide()
 
 func _process(_delta: float) -> void:                                                     # 精灵帧播放函数
 	var atlas = $Monsters/Enemy.texture as AtlasTexture                                  # 读取纹理传入位置
