@@ -7,13 +7,14 @@ func _ready() -> void:                                                          
 	# 我方
 	Global.current_monster = Global.monsters.pop_at(0)
 	$Monsters/Player.texture = load(Global.monster_data[Global.current_monster]['back texture'])
+	$Stats/PlayerStats.setup(Global.current_monster )
 	# 敌方
 	Global.current_enemy = Global.Monster.values().pick_random()
 	var new_atlas: AtlasTexture = AtlasTexture.new()                                     # 用界面展示图片做初始帧
 	new_atlas.atlas = load(Global.monster_data[Global.current_enemy]['front texture'])   # 读取图片
 	new_atlas.region = Rect2i(Vector2i.ZERO,Vector2i(96,96))                             # 分割初始帧
 	$Monsters/Enemy.texture = new_atlas                                                  # 传入纹理
-	
+	$Stats/EnemyStats.setup(Global.current_enemy)                                        # 怪物名字传参
 	$AttackSprite.hide()
 
 func _process(_delta: float) -> void:                                                     # 精灵帧播放函数
@@ -40,3 +41,8 @@ func  attack(target: TextureRect,attack_type:Global.Attack):                    
 	var tween = get_tree().create_tween()
 	tween.tween_property($AttackSprite,'frame',3.0,0.6).from(0)                     # 读取帧
 	tween.tween_property($AttackSprite,'visible',false,0)                           # 补间隐藏
+	
+	if target == $Monsters/Player:                                                  # 攻击数据传参
+		$Stats/PlayerStats.update(Global.attack_data[attack_type])
+	else:
+		$Stats/EnemyStats.update(Global.attack_data[attack_type])
