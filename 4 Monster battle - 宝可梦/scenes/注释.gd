@@ -243,7 +243,7 @@ extends Node2D
 #		current_tool = posmod(current_tool + tool_direction,Tools.size()) as Tools
 
 # 从字典里遍历出值并循环出所有 state 的拼接语句,减少代码行数
-# for state in {需遍历字典}.values():
+# for state in {需遍历字典}.values():                                    # 随机抽取需要先遍历字典
 
 # 工具使用时不能动                                   # 非循环动画结束时
 # 控制动画信号 animation_finished
@@ -367,3 +367,6 @@ extends Node2D
 #	var atlas = $Monsters/Enemy.texture as AtlasTexture                                  # 读取纹理传入位置
 #	atlas.region = Rect2i(Vector2(96 * animation_index,0),Vector2i(96,96))               # 位置xy,尺寸xy
 # 建立动画轨道 插入帧选择帧号
+
+# 判断取反
+# if not

@@ -81,3 +81,7 @@ func state_handler(value):                                                      
 			create_list_buttons(Global.State.ITEM,Global.items)                         # 自身道具
 
 	
+
+
+func _on_visibility_changed() -> void:                                                   # 菜单显示状态发生表更
+	current_state = Global.State.MAIN
