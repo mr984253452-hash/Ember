@@ -301,6 +301,8 @@ func _physics_process(delta: float) -> void:
 	#move_and_slide()                          # 驱动 velocity 移动
 "
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etf7s"]
+
 [node name="基础节点" type="Node2D" unique_id=720914940]
 script = ExtResource("1_vbua4")
 
@@ -362,6 +364,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="界面展示图片" type="TextureRect" parent="." unique_id=1363245373]
+visible = false
 offset_left = 629.0
 offset_top = 321.0
 offset_right = 669.0
@@ -446,3 +449,18 @@ layout_mode = 2
 
 [node name="配合配合滚动容器" type="ColorRect" parent="滚动容器/配合滚动容器" unique_id=1722505417]
 layout_mode = 2
+
+[node name="IU血条" type="TextureProgressBar" parent="." unique_id=1100433258]
+value = 100.0
+
+[node name="IU背景板" type="NinePatchRect" parent="." unique_id=653545943]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IU载体" type="PanelContainer" parent="." unique_id=536374006]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_etf7s")
+
+[node name="IU边框留白" type="MarginContainer" parent="." unique_id=1598223255]

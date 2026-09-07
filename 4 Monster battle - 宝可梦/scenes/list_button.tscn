@@ -1,12 +1,48 @@
 [gd_scene format=3 uid="uid://4p4sjw6ioap8"]
 
 [ext_resource type="Script" uid="uid://cnxfkst1e78ca" path="res://scenes/list_button.gd" id="1_4mtni"]
+[ext_resource type="Texture2D" uid="uid://b1cqyryj4adfv" path="res://graphics/ui/frame_selected.png" id="2_3nech"]
 [ext_resource type="Texture2D" uid="uid://dvqa4eu0mbmub" path="res://graphics/menu sprites/Atrox.png" id="2_a845q"]
+[ext_resource type="Texture2D" uid="uid://c2grkj48me8y5" path="res://graphics/ui/frame.png" id="2_n8l4n"]
+[ext_resource type="FontFile" uid="uid://bcek40pkjo1em" path="res://graphics/fonts/PixelOperator-Bold.ttf" id="4_3nech"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n8l4n"]
+texture = ExtResource("2_n8l4n")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4og4"]
+texture = ExtResource("2_3nech")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nech"]
+texture = ExtResource("2_3nech")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xcwsq"]
+texture = ExtResource("2_3nech")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
 
 [node name="ListButton" type="Button" unique_id=1252353932]
 custom_minimum_size = Vector2(180, 100)
-offset_right = 8.0
-offset_bottom = 8.0
+offset_top = 1.0
+offset_right = 180.0
+offset_bottom = 101.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_n8l4n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m4og4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3nech")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xcwsq")
 script = ExtResource("1_4mtni")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=757913100]
@@ -17,16 +53,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1500663653]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1933135996]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("2_a845q")
-stretch_mode = 2
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=1565870458]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3nech")
+theme_override_font_sizes/font_size = 33
 text = "Atrox"
 horizontal_alignment = 1
 

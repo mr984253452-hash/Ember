@@ -370,3 +370,10 @@ extends Node2D
 
 # 判断取反
 # if not
+
+# 美化
+# Control,Theme_Overrides
+# IU血条 需要添加两个图层 填充层和背景层才TextureProgressBar,texture,under和TextureProgressBar,texture,progress 后开启 TextureProgressBar,nine_patch_stretch 设置大小
+# IU载体边角框透明 底框隐藏 Control,theme_override_styles,panel,StyleBoxEmpty
+# IU边框留白 Control,theme_override,Constants
+# 滚动容器隐藏滚动条 ScrollContainer,Scrollbar,vertical_scroll_mode,Never_Show

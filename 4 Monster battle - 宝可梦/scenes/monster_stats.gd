@@ -2,16 +2,18 @@ extends Control
 
 var is_player: bool                                                             # 用来传输玩家单位是否生命归零
 signal defeat(is_player: bool)                                                  # 怪物死亡信
+@onready var label = $PanelContainer/MarginContainer/GridContainer/Label
+@onready var progress = $PanelContainer/MarginContainer/GridContainer/ProgressBar
 
-func setup(monster: Global.Monster,player = true):                              # 怪物血量读取
+func setup(monster: Global.Monster,player):                              # 怪物血量读取
 	var monster_data = Global.monster_data[monster]
-	$GridContainer/Label.text = monster_data['name']                           
-	$GridContainer/ProgressBar.max_value = monster_data['max health']
-	$GridContainer/ProgressBar.value = monster_data['max health']
+	label.text = monster_data['name']                           
+	progress.max_value = monster_data['max health']
+	progress.value = progress.max_value
 	is_player = player
 
 func update(data:Dictionary):                                                       # 血量加减
-	$GridContainer/ProgressBar.value -= data['amount']
+	progress.value -= data['amount']
 
 
 func _on_progress_bar_value_changed(value: float) -> void:                       # 怪物死亡信发送
