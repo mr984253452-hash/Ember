@@ -1,0 +1,169 @@
+extends Node2D
+
+# 游戏每秒至少 30 帧 
+# 标准分辨率 1280x720
+# 坐标 position
+# 速度 speed
+# 向量 direction
+# 二维向量 Vector2
+# 调用 .play("{动作名}")
+
+# 函数
+# 翻转                                                                           # .flip_h
+# 返回该节点所有子节点                                                              # .get_children()
+# 随机抽取                                                                        # .pick_random()
+# 销毁指令函数                                                                     # .queue_free() 
+# 帧率抵消                                                                        # *delta
+# 导出关键字                                                                      #  @export
+# 计时器作为判断                                                                   # ${计时器节点名}.time_left == 0    
+# 计时器作为开启                                                                   # ${计时器节点名}.start()           
+# 计时器作为停止                                                                   # ${计时器节点名}.stop() 
+# 显示节点贴图                                                                    # ${节点名}.show()                                  
+# 隐藏节点贴图                                                                    # ${节点名}.hide()        
+# 以玩家为中心 朝鼠标方向偏移 10                                                     # position = {坐标} + {方向} * 10                                         
+
+# 信号
+# signal                                                                        # 信号,导出信号的参数
+# 函数内绑定信号                                                                   # {变量名}.connect("{信号名}",{触发后需要执行的函数名}) ,有的信号调用需要在函数内填入作为容器的参数名
+# 进入当前区域信号                                                                 # Area2D,bodt_entered(body:Node2D)
+# 进入屏幕信号                                                                    # screen_entered()
+# 离开屏幕信号                                                                    # screen_exited()
+
+# 位置
+# 用户界面
+# 锚点                                                                           # Control,Layout,Layout Mode,Anchors,Anchor Points 修改为相对坐标/Anchor Offsets 锚点绝对值偏移
+# 文字                                                                           # Control,Theme Overrides,Fonts 字体/Font Sizes 尺寸/Layout,Anchors Preset,Custom,Anchor Offsets 位置偏移
+# 函数控制文本                                                                    # ${文本节点名}.text = str({修改内容}) 
+# 文本水平居中                                                                    # Label,Horizontal Align,Center
+# 自动播放音乐                                                                    AndioStreamPlayer,Autoplay
+# 循环播放音乐                                                                    AndioStreamPlayer.Parameters
+# 创建全局数据                                                                    # 建立场景挂载脚本 脚本内创建函数自定内容,项目设置 全局,添加场景tscn,在另外脚本内 Global.{全局函数变量名} = {变量名}
+# y轴排序,用于调节前后贴图                                                          # CanvasItem,Ordering,Y Sotr Enab 
+
+
+# Dictionary 字典
+# Array 数组
+
+
+# 预加载
+# var {变量名}_scene = preload("{文件路径}.tscn")                                  # 加载路径
+# var {变量名} = {变量名}_scene.instantiate()                                     # 实例化
+# ${生成的节点}.add_child(变量名)                                                  # 实例挂载
+
+# 角色移动
+# 方向
+# 二维向量 Vector2
+# 整数二维向量 Vector2i
+# 建立方向 var direction: Vector2 = Vector2
+# 建立速度 var speed： {整数/浮点数} = {数值} 
+# 贴图翻转 ${贴图节点名}.flip_h = true                                              
+# 横版跳跃
+# var direction_x : float                                                       # 只有左右
+# velocity.y = -10                                                              # 跳跃10
+# velocity.y += 10                                                              # 重力
+# 随机取出坐标  
+# 从多个坐标点随机抽取一个坐标生成物体
+# var {变量名}_marker = ${生成的节点}.get_children().pick_random()                 # gat_children() 返回该节点所有子节点,pick_random() 随机抽取一个节点
+# car.position = {变量名}_marker.position                                        # 读取坐标
+
+# 鼠标朝向对应动画帧
+# 建立字典
+# const {gun_directions} = {
+#	Vector2i(1,1):   0,
+#	Vector2i(1,0):   1,
+#	Vector2i(0,1):   2,
+#	Vector2i(-1,1):  3,
+#	Vector2i(-1,0):  4,
+#	Vector2i(-1,-1): 5,
+#	Vector2i(0,-1):  6,
+#	Vector2i(1,-1):  7,
+#}
+# var raw_dir = get_local_mouse_position().normalized()                         # get_local_mouse_position() 用于获得以脚本为中心的相对位置鼠标位置, normalized() 用作归一化
+# var adjusted_dir = Vector2i(round(raw_dir.x),round(raw_dir.y))                # 鼠标位置四舍五入
+# $Torso.frame = gun_directions[adjusted_dir]                                   # 字典关联四舍五入取值
+
+# 追随玩家
+# var player : CharacterBody2D                                                  # 建立追随对象指定类型
+# func _on_detection_area_body_entered(Player_bodt: CharacterBody2D) -> void:   # 传入追随对象坐标
+#	player = Player_bodt
+# func _physics_process(delta: float) -> void:                                  # 建立每帧更新坐标追随
+#	if player:                                                                  # 判断是否 存在记录坐标
+#		var dir = (player.position - position).normalized()                     # 两个对象之间坐标相减并归一化
+#		velocity = dir * speed
+#		move_and_slide()
+# player = null                                                                 # 离开检测时清除player内数据
+# 分组
+# 打印所有分组内节点
+# func _ready() -> void:
+#	print(get_tree().get_nodes_in_group('{分组名}'))
+# 从分组取出坐标 ,计算距离执行函数
+#	for drone in get_tree().get_nodes_in_group('{分组名}'):
+#		if position.distance_to(drone.position) < 10:                           # 判断 取出的坐标距离小于10像素
+#			drone.'{函数名}'()                                                   # 小于调用爆炸函数
+
+# 键盘映射
+# direction = Input.get_vector("left","right","up","down")                      # 键盘按键上下左右移动方向
+# if Input.is_action_pressed("动作小写"):                                         # 判断键盘按下,每帧输出一次
+#	direction = Vector2.{动作大写}                                                # 上一行判断后执行移动
+# if Input.is_action_just_pressed("{动作名称}"):                                  # 判断键盘按下,输出一次
+# 横版跳跃
+# 移动 跳跃
+# direction_x = Input.get_axis("left","right")    # 只有左右的移动
+# if is_on_floor():                               # 判断玩家是否在地面上
+
+# 持续函数
+# func _process(delta: float) -> void:                                          # 无碰撞
+# func _physics_process(delta: float) -> void:                                  # 有碰撞
+# 实现移动
+# position += direction * speed    # 无碰撞
+# velocity = direction * speed     # 有碰撞
+# move_and_slide()                 # 驱动 velocity 移动
+
+# 精灵帧
+# 精灵帧要开启自动播放和循环播放
+# func animation():
+#	if direction:                                                               # 判断是否存在移动方向
+#		${精灵帧贴图节点名}.flip_h = direction.x > 0                               # 判断左右方向进行关键帧翻转
+#		if direction. x != 0:
+#			${精灵帧贴图节点名}.animation = "left"                                 # 判断为左右移动
+#		else:
+#			${精灵帧贴图节点名}.animation = 'up' if direction.y < 0 else 'down'    # 判断上下方向进行关键帧翻转
+#	else:
+#		${精灵帧贴图节点名}.frame = 0                                              # 不存在移动,待机帧
+# 动画
+# 跳跃动画不自动
+# 精灵帧动画     frame
+# 缩放动画       cale
+# 明暗动画       energy
+# 补间动画
+# var tween = get_tree().create_tween()
+# tween.set_loops()                                                             # 括号内填循环次数
+# tween.tween_property(${贴图节点名},'{需变换的属性}'Vector2(变化的数值),变化时间).from(Vector2(起始数值))
+
+# 场景切换                                                                       
+# call_deferred('{函数名}')                                                      # 需用分别创建两个函数,函数名为下一条代码的函数名,以延迟运算
+# get_tree().change_scene_to_file('{文件路径}')
+
+# 灯光
+# 太阳光需要调到混合模式 Mix 才能与别的灯泡一起生效
+# 太阳光可以 添加剪去当前灯光 Light2D,Blend_mode
+# 添加太阳光阴影时 需要勾选太阳光节点的阴影
+# 灯泡可以自定义渐变光源贴图 GradientTexture2D
+# 着色器
+# 2d  选择贴图节点后,CanvasItem,material,material,shader,VisualShader,Canvas Iten
+# Vertex 是颜色 Color 是透明度 灰色是填入浮点数 不同深浅代表各类向量数据
+# 给贴图图像整图添加颜色  ColorConstant  连接Color
+# 给贴图图像添加颜色 Color 连接Color
+# 透明度 FioatConstant 连接 Alpha
+# 计算浮点数运算 multiply(*) 图像是FL匕
+# 设置半透明用 Color + FloatConstant 连接到 multiply(*) 再连到 Alpha
+# 面板两种颜色做混合
+# 添加色ColorParameter + 本色Color + 混合比值FloatParameter 连到 Mix3 再连到输出 输出Color
+# 函数修改面板着色器参数
+# 图片{节点名}.根路径.set_{第二个折叠路径}('{参数名}',{修改数值})
+# 补间函数 tween.tween_property({节点名}.根路径,'{第二个折叠路径}/{参数名}',{修改数值},{持续时间})
+
+# 判断达成
+# var is_{变量名}: bool = false        # 设定初始状态
+# is_{变量名} = true                   # 达成目标
+# if not is_{变量名}:                  # 判断是否达成模版,达成后执行
