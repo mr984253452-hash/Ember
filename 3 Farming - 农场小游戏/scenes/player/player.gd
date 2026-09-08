@@ -67,6 +67,7 @@ func animation():                                                               
 		$AnimationTree.set('parameters/MoveStateMachine/move/blend_position',target_vector)
 		$AnimationTree.set('parameters/MoveStateMachine/idle/blend_position',target_vector)
 		for state in tool_connection.values():
+			print(state)
 			$AnimationTree.set('parameters/ToolStateMachine/' + state + '/blend_position',target_vector)
 	else :
 		move_state_machine.travel('idle')

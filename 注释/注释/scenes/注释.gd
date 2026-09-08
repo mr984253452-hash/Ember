@@ -222,12 +222,12 @@ extends Node2D
 # 方向动画   状态机界面右键 添加BlendSpace2D 需要点击小铅笔进入方向动画界面 添加移动点 和游戏里的y轴相反
 # 进入控制动画面板 需需双击控制动画节点
 
-# 切换待机动画 Start -> idle  <- 不带自动播放互联->  move 
+# 切换待机动画 Start->idle<-->move不带自动播放互相连接
 # @onready var move_state_machine:AnimationNodeStateMachinePlayback = ${控制动画节点名}.get('parameters/MoveStateMachine/playback')
 # {创建的路径节点名}.travel('{状态名称}')
 
 # 函数修改控制动画
-# ${节点名}.set("{路径}",{修改数值})
+# ${节点名}.set("{路径}",{修改方向数值})
 
 # 枚举
 # 建立枚举 enum Tools {如 HOE,AXE,WATER}                                          # 用于建立如多项农具,来减少输入格式字母错误
@@ -356,7 +356,7 @@ extends Node2D
 # .erase()   删除
 
 # 用界面展示图片做初始帧
-# var new_atlas: AtlasTexture = AtlasTexture.new()
+# var new_atlas: AtlasTexture = AtlasTexture.new()             
 # new_atlas.atlas = load(Global.monster_data[Global.current_enemy]['front texture'])
 # new_atlas.region = Rect2i(Vector2i.ZERO,Vector2i(96,96))
 # $Monsters/Enemy.texture = new_atlas

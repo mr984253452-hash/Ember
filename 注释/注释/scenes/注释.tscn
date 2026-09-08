@@ -304,6 +304,7 @@ func _physics_process(delta: float) -> void:
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etf7s"]
 
 [node name="基础节点" type="Node2D" unique_id=720914940]
+visible = false
 script = ExtResource("1_vbua4")
 
 [node name="静态贴图" type="Sprite2D" parent="." unique_id=1808266401]

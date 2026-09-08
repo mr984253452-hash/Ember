@@ -9,6 +9,7 @@ func _process(_delta: float) -> void:                                           
 	$CanvasModulate.color = datyime_gradient.sample(daytime_point)              # 调色滤镜读取 datyime_gradient
 	if Input.is_action_just_pressed('ui_focus_next'):
 		day_switch()
+		print('123')
 
 func _on_player_tool_use(tool: int, pos: Vector2) -> void:                      # 工具信号逻辑
 	var grid_pos = Vector2i(int(pos.x/16),int(pos.y/16))                        # 像素坐标转方格坐标
